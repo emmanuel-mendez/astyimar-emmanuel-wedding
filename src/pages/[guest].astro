@@ -1,0 +1,34 @@
+---
+import Table from "../components/organisms/Table.astro";
+import Layout from "../layouts/Layout.astro";
+import { tables } from "../data.json";
+import Intro from "../components/organisms/Intro.astro";
+import Banner from "../components/organisms/Banner.astro";
+
+export type Guest = {
+  id: string;
+  name: string;
+  coupon?: number;
+};
+
+export const allGuests: Guest[] = tables.flat();
+
+const guestParam: string = Astro.params.guest;
+
+const guest: Guest | undefined = allGuests.find(
+  (g: Guest) => g.id === guestParam
+);
+
+export function getStaticPaths() {
+  return allGuests.map((guest: Guest) => ({
+    params: { guest: guest.id },
+  }));
+}
+---
+
+<Layout>
+  <Banner />
+  {guest && <Intro guest={guest} />}
+
+  {guest && <Table guest={guest} />}
+</Layout>
