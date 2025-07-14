@@ -2,6 +2,7 @@
 import Footer from "../components/organisms/Footer.astro";
 import Header from "../components/organisms/Header.astro";
 import "../../styles/reset.css";
+import "../../styles/typography.css";
 ---
 
 <html lang="es">
@@ -10,9 +11,9 @@ import "../../styles/reset.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>Astyimar y Emmanuel</title>
   </head>
-  <body>
+  <body class="font--body">
     <Header />
     <div>
       <slot />
@@ -21,10 +22,15 @@ import "../../styles/reset.css";
   </body>
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       display: grid;
       min-height: 100svh;
       grid-template-rows: auto 1fr auto;
+      color: #333333;
     }
   </style>
 </html>
