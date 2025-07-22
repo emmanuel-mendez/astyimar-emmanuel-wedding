@@ -14,36 +14,39 @@ import { Image } from "astro:assets";
 </button>
 <nav id="nav" hidden>
   <div class="menu">
-    <ul>
-      <li><a href="#guest">Invitado</a></li>
-      <li><a href="#date">Fecha</a></li>
-      <li><a href="#location">Lugar</a></li>
-      <li><a href="#dress-code">Código de vestimenta</a></li>
-      <li><a href="#timeline">Itinerario</a></li>
-      <li><a href="#gifts">Regalos</a></li>
-      <li><a href="#table">Encuentra tu mesa</a></li>
-    </ul>
+    <div class="list">
+      <ul>
+        <li><a class="link" href="#guest">Invitado</a></li>
+        <li><a class="link" href="#date">Fecha</a></li>
+        <li><a class="link" href="#location">Lugar</a></li>
+        <li><a class="link" href="#dress-code">Código de vestimenta</a></li>
+        <li><a class="link" href="#timeline">Itinerario</a></li>
+        <li><a class="link" href="#gifts">Regalos</a></li>
+        <li><a class="link" href="#table">Encuentra tu mesa</a></li>
+      </ul>
+      <a href="#" class="button">Confirma tu asistencia</a>
+    </div>
 
     <div class="cats">
       <div class="cat">
-        <Image src="/icons/lolo.svg" alt="Lolo" width={45} height={45} />
+        <Image src="/icons/lolo.svg" alt="Lolo" width={35} height={35} />
         <h2 class="cat__name">Lolo</h2>
       </div>
       <div class="cat">
-        <Image src="/icons/michi.svg" alt="Michi" width={45} height={45} />
+        <Image src="/icons/michi.svg" alt="Michi" width={35} height={35} />
         <h2 class="cat__name">Michi</h2>
       </div>
       <div class="cat">
         <Image
           src="/icons/escuichi.svg"
           alt="Escuichi"
-          width={45}
-          height={45}
+          width={35}
+          height={35}
         />
         <h2 class="cat__name">Escuichi</h2>
       </div>
       <div class="cat">
-        <Image src="/icons/bestia.svg" alt="Bestia" width={45} height={45} />
+        <Image src="/icons/bestia.svg" alt="Bestia" width={35} height={35} />
         <h2 class="cat__name">Nene Bestia</h2>
       </div>
     </div>
@@ -56,7 +59,7 @@ import { Image } from "astro:assets";
     background-color: transparent;
     outline: none;
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1280px) {
       display: none;
     }
   }
@@ -102,7 +105,7 @@ import { Image } from "astro:assets";
     width: 100%;
     overflow: hidden;
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1280px) {
       position: static;
       width: auto;
     }
@@ -113,6 +116,7 @@ import { Image } from "astro:assets";
     right: 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1.75rem;
     justify-content: space-between;
     width: 100%;
@@ -122,7 +126,7 @@ import { Image } from "astro:assets";
     background-color: white;
     transition: right 0.4s ease-in-out;
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1280px) {
       width: auto;
       min-height: auto;
       padding: 1rem 0;
@@ -133,8 +137,24 @@ import { Image } from "astro:assets";
   nav[hidden] .menu {
     right: -100%;
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1280px) {
       right: 0;
+    }
+  }
+
+  .list {
+    display: flex;
+    width: min(100%, 28.125rem);
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.8rem;
+
+    @media (min-width: 1280px) {
+      flex-direction: row;
+      width: unset;
+
+      align-items: center;
+      justify-content: center;
     }
   }
 
@@ -143,10 +163,20 @@ import { Image } from "astro:assets";
     flex-direction: column;
     gap: 1.5rem;
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1280px) {
       flex-direction: row;
       gap: 1.8rem;
     }
+  }
+
+  .button {
+    background: #9480b2;
+    color: #ffffff;
+    padding: 0.5em 1.2em;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: bold;
   }
 
   .cats {
@@ -155,7 +185,7 @@ import { Image } from "astro:assets";
     justify-content: center;
     place-items: centes;
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1280px) {
       display: none;
     }
   }
@@ -172,13 +202,13 @@ import { Image } from "astro:assets";
     text-align: center;
   }
 
-  a {
+  .link {
     position: relative;
     color: currentColor;
     text-decoration: none;
     font-size: 1.25rem;
   }
-  a::after {
+  .link::after {
     content: "";
     position: absolute;
     bottom: -0.25rem;
@@ -189,8 +219,8 @@ import { Image } from "astro:assets";
     transform: scaleX(0);
     transition: transform 0.2s ease-in-out;
   }
-  a:hover::after,
-  a:focus::after {
+  .link:hover::after,
+  .link:focus::after {
     transform: scaleX(1);
   }
 </style>
