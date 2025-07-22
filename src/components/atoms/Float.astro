@@ -1,0 +1,47 @@
+<a href="#">
+  <img src="/icons/schedule.svg" alt="Confirmar asistencia" />
+  <p>
+    <span class="line">Confirma</span>
+    <span class="line">tu asistencia</span>
+  </p>
+</a>
+
+<style>
+  a {
+    background-color: #ffffff;
+    box-shadow: 0.0625rem 0.0625rem 0.25rem rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    border-radius: 10px;
+    position: fixed;
+    right: 1rem;
+    bottom: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    z-index: 1;
+    color: #000000;
+    text-decoration: none;
+
+    @media (min-width: 1280px) {
+      display: none;
+    }
+  }
+
+  img {
+    width: 2.5rem;
+    background-color: #9480b2;
+    padding: 0.5rem;
+    border-radius: 50%;
+  }
+
+  p {
+    text-align: center;
+    font-size: 0.75rem;
+  }
+
+  .line {
+    display: block;
+  }
+</style>

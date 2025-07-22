@@ -1,8 +1,9 @@
 ---
-import Footer from "../components/organisms/Footer.astro";
-import Header from "../components/organisms/Header.astro";
 import "../../styles/reset.css";
 import "../../styles/typography.css";
+import Float from "../components/atoms/Float.astro";
+import Footer from "../components/organisms/Footer.astro";
+import Header from "../components/organisms/Header.astro";
 ---
 
 <html lang="es">
@@ -17,6 +18,7 @@ import "../../styles/typography.css";
     <Header />
     <div>
       <slot />
+      <Float />
     </div>
     <Footer />
   </body>
