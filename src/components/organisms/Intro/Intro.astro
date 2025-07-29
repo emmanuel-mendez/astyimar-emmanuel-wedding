@@ -8,20 +8,146 @@ interface Props {
 const { guest } = Astro.props;
 ---
 
-<section class="intro">
-  <p class="description"></p>
-
+<section class="host">
   {
     guest && (
       <div class="guest">
-        <h2 class="name">{guest.name}</h2>
-        <p class="coupon">{guest.coupon && `Cupón: ${guest.coupon}`}</p>
+        <h2 class="name">
+          <span class="highlight">{guest.name}</span>, compartir este día
+          contigo lo hace aún más especial.
+        </h2>
       </div>
     )
   }
 
-  <p class="note">
-    *Solo podrás ingresar al salón de fiestas si fuiste invitado por alguno de
-    los novios. No se aceptan personas que no hayan sido invitadas.
-  </p>
+  {
+    guest && guest.coupon && (
+      <p class="coupon">
+        ¡Qué emoción! Dispones de
+        <span class="highlight">({guest.coupon})</span>
+        {guest.coupon > 1 ? "cupones" : "cupón"}, por cada cupón que tengas
+        podrás asistir con un acompañante extra.
+      </p>
+    )
+  }
+
+  <div class="info">
+    <p class="message">
+      El amor es infinito pero el espacio es limitado, por eso hemos resevado
+      con cariño tu lugar {
+        guest?.coupon
+          ? guest.coupon > 1
+            ? "¡y el de tus acompañantes!"
+            : "¡y el de tu acompañante!"
+          : "¡tu presencia es muy importante para nosotros!"
+      }
+    </p>
+
+    <p class="disclaimer">
+      *Este es un evento privado, por lo que tu identificación será requerida al
+      ingresar. No se aceptan personas que no hayan sido invitadas.
+    </p>
+  </div>
 </section>
+
+<style>
+  .host {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 1.5rem;
+    gap: 1.6rem;
+
+    @media (min-width: 48rem) {
+      padding: 4rem 2rem;
+      gap: 2rem;
+    }
+
+    @media (min-width: 64rem) {
+      padding: 6rem 2rem;
+      gap: 2.8rem;
+    }
+
+    @media (min-width: 85.375rem) {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+      gap: 3.6rem;
+    }
+  }
+
+  .guest {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .name {
+    font-size: 2.4rem;
+
+    @media (min-width: 48rem) {
+      font-size: 2.8rem;
+    }
+
+    @media (min-width: 64rem) {
+      text-align: center;
+      font-size: 3rem;
+    }
+  }
+
+  .highlight {
+    font-weight: bold;
+  }
+
+  .coupon {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #9480b2;
+    color: white;
+    border-radius: 0.125rem;
+    max-width: 27.1875rem;
+    align-self: center;
+
+    @media (min-width: 48rem) {
+      font-size: 1.6rem;
+    }
+
+    @media (min-width: 64rem) {
+      padding: 2.5rem;
+      max-width: 48rem;
+      font-size: 1.8rem;
+    }
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @media (min-width: 48rem) {
+      gap: 2.4rem;
+    }
+
+    @media (min-width: 64rem) {
+      gap: 2.8rem;
+    }
+  }
+
+  .message {
+    font-size: 1.2rem;
+
+    @media (min-width: 48rem) {
+      font-size: 1.6rem;
+    }
+
+    @media (min-width: 64rem) {
+      font-size: 1.8rem;
+    }
+  }
+
+  .disclaimer {
+    font-size: 1rem;
+
+    @media (min-width: 48rem) {
+      font-size: 1.4rem;
+    }
+  }
+</style>
