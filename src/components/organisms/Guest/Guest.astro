@@ -1,0 +1,255 @@
+---
+import { Image } from "astro:assets";
+import type { Guest } from "../../../pages/[guest].astro";
+
+interface Props {
+  guest?: Guest;
+}
+
+const { guest } = Astro.props;
+---
+
+<section id="guest" class="host">
+  <div class="container">
+    <div class="column">
+      {
+        guest && (
+          <div class="guest">
+            <h2 class="name">
+              <span class="highlight">{guest.name}</span>, compartir este día
+              contigo lo hace aún más especial.
+            </h2>
+          </div>
+        )
+      }
+
+      {
+        guest && (
+          <div class="coupon">
+            {guest.coupon ? (
+              <p>
+                <span>
+                  ¡Qué emoción! Dispones de
+                  <span class="highlight">({guest.coupon})</span>
+                  {guest.coupon > 1 ? "cupones" : "cupón"}, por cada cupón que
+                  tengas podrás asistir con un acompañante extra.
+                </span>
+                <Image
+                  src="/icons/ticket.svg"
+                  alt="Coupon"
+                  width={300}
+                  height={200}
+                  class="coupon__image"
+                />
+              </p>
+            ) : (
+              <p>
+                <span>
+                  El destino nos unió y queremos que seas parte de este capítulo
+                  tan importante en nuestras vidas. ¡Acompáñanos!
+                </span>
+                <Image
+                  src="/icons/rings.svg"
+                  alt="Rings"
+                  width={300}
+                  height={200}
+                  class="coupon__image"
+                />
+              </p>
+            )}
+          </div>
+        )
+      }
+    </div>
+
+    <div class="info">
+      <p class="message">
+        El amor es infinito pero el espacio es limitado, por eso hemos reservado
+        con cariño tu lugar {
+          guest?.coupon ? (
+            guest.coupon > 1 ? (
+              <span class="message__extra-guests">
+                ¡y el de tus acompañantes!
+              </span>
+            ) : (
+              "¡y el de tu acompañante!"
+            )
+          ) : (
+            "¡tu presencia es muy importante para nosotros!"
+          )
+        }
+      </p>
+
+      <p class="disclaimer">
+        *Esta es una reunión privada, por lo que tu identificación será
+        requerida al ingresar. Por favor, ten en cuenta que el evento es solo
+        para personas invitadas.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .host {
+    position: relative;
+    background-image: url("/images/guest-background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+
+  .host::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(
+      255,
+      255,
+      255,
+      0.5
+    ); /* Adjust opacity and color as needed */
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .container,
+  .column,
+  .info {
+    position: relative;
+    z-index: 1;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 1.75rem;
+    gap: 1.6rem;
+
+    @media (min-width: 48rem) {
+      padding: 4rem 2rem;
+      gap: 2rem;
+    }
+
+    @media (min-width: 64rem) {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding: 6rem 2rem;
+      gap: 3.5rem;
+    }
+
+    @media (min-width: 85.375rem) {
+      padding: 6rem 2rem;
+      gap: 4.5rem;
+    }
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    @media (min-width: 48rem) {
+      gap: 2rem;
+    }
+
+    @media (min-width: 64rem) {
+      gap: 2.8rem;
+    }
+
+    @media (min-width: 85.375rem) {
+      gap: 3.6rem;
+    }
+  }
+
+  .guest {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .name {
+    font-size: 2.4rem;
+
+    @media (min-width: 48rem) {
+      font-size: 2.8rem;
+    }
+
+    @media (min-width: 64rem) {
+      font-size: 3.8rem;
+    }
+  }
+
+  .highlight {
+    font-weight: bold;
+  }
+
+  .coupon {
+    position: relative;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background-color: #9480b2;
+    color: white;
+    border-radius: 0.25rem;
+    max-width: 27.1875rem;
+    align-self: center;
+
+    @media (min-width: 48rem) {
+      font-size: 1.6rem;
+    }
+
+    @media (min-width: 64rem) {
+      padding: 2.5rem;
+      max-width: 48rem;
+      font-size: 1.8rem;
+    }
+  }
+
+  .coupon__image {
+    position: absolute;
+    top: calc(100% - 3rem);
+    right: -1.2rem;
+    width: 5rem;
+    height: auto;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @media (min-width: 48rem) {
+      gap: 2.4rem;
+    }
+
+    @media (min-width: 64rem) {
+      justify-content: center;
+      gap: 2.8rem;
+    }
+  }
+
+  .message {
+    font-size: 1.2rem;
+
+    @media (min-width: 48rem) {
+      font-size: 1.6rem;
+    }
+
+    @media (min-width: 64rem) {
+      font-size: 2.4rem;
+    }
+  }
+
+  .message__extra-guests {
+    display: block;
+  }
+
+  .disclaimer {
+    font-size: 0.85rem;
+
+    @media (min-width: 48rem) {
+      font-size: 1.2rem;
+    }
+  }
+</style>
