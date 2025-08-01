@@ -41,6 +41,7 @@
   display: flex;
   width: 100%;
   overflow: hidden;
+  pointer-events: none;
 }
 @media (min-width: 1280px) {
   .nav {
@@ -64,6 +65,7 @@
   background-color: white;
   transition: right 0.4s ease-in-out;
   overflow-y: auto;
+  pointer-events: auto;
 }
 @media (min-width: 1280px) {
   .menu {
