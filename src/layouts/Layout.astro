@@ -26,6 +26,11 @@ import Header from "../components/organisms/Header/Header.astro";
   <style>
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 5.4375rem;
+
+      @media (min-width: 80rem) {
+        scroll-padding-top: 6.5rem;
+      }
     }
 
     body {
