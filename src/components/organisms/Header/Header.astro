@@ -7,7 +7,7 @@ import { Nav } from "../Nav/Nav";
   <div class="container">
     <Image
       class="logo"
-      src="/icons/logo--white.svg"
+      src="/icons/logo.svg"
       width="90"
       height="52"
       alt="Logo"
@@ -35,11 +35,13 @@ import { Nav } from "../Nav/Nav";
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: min(100%, 1280px);
+    width: min(100%, 80rem);
   }
 
   .logo {
     cursor: pointer;
+    -webkit-filter: drop-shadow(0.0625rem 0 0.1875rem #6d578f);
+    filter: drop-shadow(0.0625rem 0 0.1875rem #6d578f);
 
     @media (min-width: 1280px) {
       width: 6.875rem;
