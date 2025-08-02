@@ -31,7 +31,7 @@ const { guest } = Astro.props;
                 <span>
                   ¡Qué emoción! Dispones de
                   <span class="highlight">({guest.coupon})</span>
-                  {guest.coupon > 1 ? "cupones" : "cupón"}, por cada cupón que
+                  {guest.coupon > 1 ? "cupones" : "cupón"}. Por cada cupón que
                   tengas podrás asistir con un acompañante extra.
                 </span>
                 <Image
@@ -49,7 +49,7 @@ const { guest } = Astro.props;
                   tan importante en nuestras vidas. ¡Acompáñanos!
                 </span>
                 <Image
-                  src="/icons/rings.svg"
+                  src="/icons/cups.svg"
                   alt="Rings"
                   width={300}
                   height={200}
@@ -92,18 +92,27 @@ const { guest } = Astro.props;
 <style>
   .host {
     position: relative;
-    background-image: url("/images/guest-background.jpg");
+    background-image: url("/images/guest-background.png");
     background-size: cover;
-    background-position: center;
+    background-position: left bottom;
     background-repeat: no-repeat;
     z-index: 0;
+
+    @media (min-width: 768px) {
+      background-image: url("/images/guest-background--tablet.png");
+    }
+
+    @media ((min-width: 1024px)) {
+      background-image: url("/images/guest-background--desktop.png");
+      background-position: right bottom;
+    }
   }
 
   .host::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
     z-index: 1;
     pointer-events: none;
   }
@@ -118,25 +127,25 @@ const { guest } = Astro.props;
   .container {
     display: flex;
     flex-direction: column;
-    padding: 3rem 1.75rem;
+    padding: 3rem 1.75rem 9rem;
     gap: 1.6rem;
 
-    @media (min-width: 48rem) {
-      padding: 4rem 2rem;
+    @media (min-width: 768px) {
+      padding: 4rem 2rem 15rem;
       gap: 2rem;
     }
 
-    @media (min-width: 64rem) {
-      max-width: 1280px;
+    @media (min-width: 1024px) {
+      max-width: 80rem;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      padding: 6rem 2rem;
+      padding: 6rem 2rem 8rem;
       gap: 3.5rem;
     }
 
     @media (min-width: 85.375rem) {
-      padding: 6rem 2rem;
+      padding: 6rem 2rem 10rem;
       gap: 4.5rem;
     }
   }
@@ -146,11 +155,11 @@ const { guest } = Astro.props;
     flex-direction: column;
     gap: 1.6rem;
 
-    @media (min-width: 48rem) {
+    @media (min-width: 768px) {
       gap: 2rem;
     }
 
-    @media (min-width: 64rem) {
+    @media (min-width: 1024px) {
       gap: 2.8rem;
     }
 
@@ -167,11 +176,11 @@ const { guest } = Astro.props;
   .name {
     font-size: 2.4rem;
 
-    @media (min-width: 48rem) {
+    @media (min-width: 768px) {
       font-size: 2.8rem;
     }
 
-    @media (min-width: 64rem) {
+    @media (min-width: 1024px) {
       font-size: 3.8rem;
     }
   }
@@ -189,11 +198,11 @@ const { guest } = Astro.props;
     color: white;
     border-radius: 0.25rem;
 
-    @media (min-width: 48rem) {
+    @media (min-width: 768px) {
       font-size: 1.6rem;
     }
 
-    @media (min-width: 64rem) {
+    @media (min-width: 1024px) {
       padding: 2.5rem;
       font-size: 1.8rem;
     }
@@ -211,24 +220,24 @@ const { guest } = Astro.props;
     flex-direction: column;
     gap: 2rem;
 
-    @media (min-width: 48rem) {
+    @media (min-width: 768px) {
       gap: 2.4rem;
     }
 
-    @media (min-width: 64rem) {
+    @media (min-width: 1024px) {
       justify-content: center;
-      gap: 2.8rem;
+      gap: 2.2rem;
     }
   }
 
   .message {
     font-size: 1.2rem;
 
-    @media (min-width: 48rem) {
+    @media (min-width: 768px) {
       font-size: 1.6rem;
     }
 
-    @media (min-width: 64rem) {
+    @media (min-width: 1024px) {
       font-size: 2.4rem;
     }
   }
@@ -239,8 +248,9 @@ const { guest } = Astro.props;
 
   .disclaimer {
     font-size: 0.85rem;
+    max-width: 47ch;
 
-    @media (min-width: 48rem) {
+    @media (min-width: 768px) {
       font-size: 1.2rem;
     }
   }
