@@ -1,9 +1,15 @@
 import { useState } from "preact/hooks";
 import styles from "./styles.module.css";
+import type { Guest } from "../../../models/types/guest";
+
+interface Props {
+  guest?: Guest;
+}
 
 type Link = {
   href: string;
   label: string;
+  invited?: boolean;
 };
 
 type Cat = {
@@ -12,11 +18,11 @@ type Cat = {
   name: string;
 };
 
-export function Nav() {
+export function Nav({ guest }: Props) {
   const [visible, setVisible] = useState<boolean>(false);
 
   const navLinks: Link[] = [
-    { href: "#guest", label: "Invitado" },
+    { href: "#guest", label: "Invitado", invited: guest ? true : false },
     { href: "#date", label: "Fecha" },
     { href: "#location", label: "Lugar" },
     { href: "#dress-code", label: "Código de vestimenta" },
@@ -72,17 +78,19 @@ export function Nav() {
         <div className={styles.menu}>
           <div className={styles.list}>
             <ul>
-              {navLinks.map((item) => (
-                <li key={item.href}>
-                  <a
-                    className={styles.link}
-                    href={item.href}
-                    onClick={linkClick}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
+              {navLinks
+                .filter((item) => item.invited !== false)
+                .map((item) => (
+                  <li key={item.href}>
+                    <a
+                      className={styles.link}
+                      href={item.href}
+                      onClick={linkClick}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
             </ul>
             <a href="#" className={styles.button} onClick={linkClick}>
               Confirma tu asistencia

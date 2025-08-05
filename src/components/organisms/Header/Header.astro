@@ -1,6 +1,13 @@
 ---
 import { Image } from "astro:assets";
 import { Nav } from "../Nav/Nav";
+import type { Guest } from "../../../models/types/guest";
+
+interface Props {
+  guest?: Guest;
+}
+
+const { guest } = Astro.props;
 ---
 
 <header>
@@ -15,7 +22,7 @@ import { Nav } from "../Nav/Nav";
       onclick="window.scrollTo({top: 0});"
     />
 
-    <Nav client:load />
+    <Nav client:load guest={guest} />
   </div>
 </header>
 
