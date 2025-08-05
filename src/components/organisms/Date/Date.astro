@@ -3,18 +3,35 @@ import CountDown from "../../molecules/CountDown/CountDown";
 
 const date = new globalThis.Date("2025-12-13T14:00:00");
 
-const formattedDate = date.toLocaleDateString("es-ES", {
+let formattedDate = date.toLocaleDateString("es-ES", {
   weekday: "long",
   year: "numeric",
   month: "long",
   day: "numeric",
+});
+
+formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+
+const formattedHour = date.toLocaleTimeString("es-ES", {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: true,
 });
 ---
 
 <section class="host" id="date">
   <CountDown client:visible target={date} />
 
-  <p class="date">{formattedDate}</p>
+  <div class="info">
+    <p class="date">
+      <span class="info__heading">Día:</span>
+      <span class="info__content">{formattedDate}</span>
+    </p>
+    <p class="hour">
+      <span class="info__heading">Hora:</span>
+      <span class="info__content">{formattedHour}</span>
+    </p>
+  </div>
 </section>
 
 <style>
@@ -32,16 +49,16 @@ const formattedDate = date.toLocaleDateString("es-ES", {
     }
   }
 
-  .date {
-    font-size: 1rem;
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: 1.2rem;
     color: var(--white);
 
     @media (min-width: 768px) {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
     }
-  }
-
-  .date:first-letter {
-    text-transform: uppercase;
   }
 </style>
