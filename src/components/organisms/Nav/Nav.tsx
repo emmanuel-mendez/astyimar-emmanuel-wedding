@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import styles from "./styles.module.css";
 import type { Guest } from "../../../models/types/guest";
 
@@ -21,10 +21,22 @@ type Cat = {
 export function Nav({ guest }: Props) {
   const [visible, setVisible] = useState<boolean>(false);
 
+  useEffect(() => {
+    const body = document.body;
+    if (visible) {
+      body.classList.add("overflow-y--hidden");
+    } else {
+      body.classList.remove("overflow-y--hidden");
+    }
+    return () => {
+      body.classList.remove("overflow-y--hidden");
+    };
+  }, [visible]);
+
   const navLinks: Link[] = [
     { href: "#guest", label: "Invitado", invited: guest ? true : false },
     { href: "#date", label: "Fecha" },
-    { href: "#location", label: "Lugar" },
+    { href: "#location", label: "Recepción" },
     { href: "#dress-code", label: "Código de vestimenta" },
     { href: "#timeline", label: "Itinerario" },
     { href: "#gifts", label: "Regalos" },
