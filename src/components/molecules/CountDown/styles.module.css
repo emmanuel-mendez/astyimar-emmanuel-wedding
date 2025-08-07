@@ -35,6 +35,10 @@
     width: min(100%, 48rem);
     gap: 1.5rem;
   }
+
+  @media (min-width: 1366px) {
+    width: min(100%, 64rem);
+  }
 }
 
 .block {
@@ -68,6 +72,10 @@
 
   @media (min-width: 1024px) {
     font-size: 3rem;
+  }
+
+  @media (min-width: 1366px) {
+    font-size: 3.8rem;
   }
 }
 
