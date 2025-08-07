@@ -24,6 +24,7 @@ function getTimeRemaining(target: Date) {
   const minutes = Math.floor((total / 1000 / 60) % 60);
   const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
   const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
   return { total, days, hours, minutes, seconds };
 }
 
@@ -49,6 +50,7 @@ export default function CountDown({ target }: CountDownProps) {
         seconds: Math.floor((totalPassed / 1000) % 60),
       }
     : time;
+
   return (
     <div class={styles.host}>
       <h2 class={styles.title}>{isPassed ? "Ya han pasado:" : "Faltan:"}</h2>
@@ -69,6 +71,7 @@ function CountDownBlocks({
     { value: minutes, label: "Minutos" },
     { value: seconds, label: "Segundos" },
   ];
+
   return (
     <div class={styles.blocks}>
       {blocks.map(({ value, label }) => (
@@ -79,9 +82,11 @@ function CountDownBlocks({
 }
 
 function CountDownBlock({ value, label }: CountDownBlockProps) {
+  const displayValue = value < 10 ? `0${value}` : value;
+
   return (
     <div class={styles.block}>
-      <span class={styles.value}>{value}</span>
+      <span class={styles.value}>{displayValue}</span>
       <div class={styles.label}>{label}</div>
     </div>
   );
