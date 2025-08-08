@@ -2,6 +2,7 @@
 import Banner from "../components/organisms/Banner/Banner.astro";
 import Date from "../components/organisms/Date/Date.astro";
 import GuestSection from "../components/organisms/Guest/Guest.astro";
+import Location from "../components/organisms/Location/Location.astro";
 import Table from "../components/organisms/Table/Table.astro";
 import { tables } from "../data.json";
 import Layout from "../layouts/Layout.astro";
@@ -24,10 +25,8 @@ export function getStaticPaths() {
 
 <Layout guest={guest}>
   <Banner />
-
   {guest && <GuestSection guest={guest} />}
-
   <Date />
-
+  <Location />
   {guest && <Table guest={guest} />}
 </Layout>

@@ -1,0 +1,64 @@
+---
+import SummaryArrow from "/public/icons/summary-arrow.svg";
+
+interface Props {
+  label: string;
+}
+
+const { label }: Props = Astro.props;
+---
+
+<details>
+  <summary>
+    {label}
+    <span class="icon" aria-hidden="true">
+      <SummaryArrow class="icon" width={24} height={24} />
+    </span>
+  </summary>
+  <div class="content">
+    <slot />
+  </div>
+</details>
+
+<style>
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+    cursor: pointer;
+    border-bottom: 0.0625rem solid var(--secondary);
+    font-size: 1.4rem;
+  }
+
+  .icon {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  details[open] .icon {
+    transform: rotate(90deg);
+  }
+
+  details[open] .content {
+    animation: openContent 0.4s linear forwards;
+  }
+
+  .content {
+    padding: 1.5rem 1rem;
+
+    @media (min-width: 1024px) {
+      padding: 1rem 1.5rem;
+      padding-bottom: 0;
+    }
+  }
+
+  @keyframes openContent {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+</style>

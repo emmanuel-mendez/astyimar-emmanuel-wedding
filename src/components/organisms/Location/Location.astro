@@ -1,0 +1,170 @@
+---
+import Details from "../../molecules/Details/Details.astro";
+import { Image } from "astro:assets";
+---
+
+<section id="location" class="host">
+  <div class="container">
+    <div class="info">
+      <h2 class="title">
+        <span>Recepción</span>
+
+        <Image
+          src="/images/location__heart.webp"
+          alt="Location"
+          width={24}
+          height={24}
+          class="title__icon"
+        />
+      </h2>
+
+      <p class="address">
+        <span>Dirección:</span>
+        <span>
+          Primera avenida con Calle 7 de Propatria, edificio 4 piso 1 Frente a
+          los talleres del metro, a una cuadra de la estación, Caracas 1030,
+          Distrito Capital
+        </span>
+      </p>
+    </div>
+
+    <div class="content">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1706.072945312379!2d-66.95784449287744!3d10.50497520613601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5f0a050e1fd5%3A0x700b0dbc082a322c!2sSal%C3%B3n%20de%20Fiestas%20D'Galance!5e0!3m2!1sen!2sve!4v1754602589854!5m2!1sen!2sve"
+        width="800"
+        height="600"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      <div class="details">
+        <Details label="¿Cómo llegar?">
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/reel/DKNikr7RV36/?utm_source=ig_embed&utm_campaign=loading"
+            data-instgrm-version="14"
+          >
+          </blockquote>
+          <script async src="//www.instagram.com/embed.js"></script>
+        </Details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .host {
+    position: relative;
+    z-index: 0;
+    padding: 3rem 1.5rem;
+    background: none;
+    overflow: hidden;
+
+    @media (min-width: 1024px) {
+      padding: 3.5rem 2rem;
+    }
+  }
+
+  .host::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url("/images/location-background.webp");
+    background-size: cover;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.4;
+    pointer-events: none;
+    transition: background-image 0.3s;
+
+    @media (min-width: 768px) {
+      background-image: url("/images/location-background--tablet.webp");
+    }
+
+    @media (min-width: 1024px) {
+      background-image: url("/images/location-background--desktop.webp");
+      opacity: 0.3;
+    }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 80rem;
+    margin: 0 auto;
+
+    @media (min-width: 1024px) {
+      gap: 3rem;
+    }
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @media (min-width: 1024px) {
+      gap: 2rem;
+    }
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2ch;
+    font-size: 2rem;
+
+    @media (min-width: 768px) {
+      font-size: 3rem;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 3.8rem;
+    }
+  }
+
+  .title__icon {
+    @media (min-width: 768px) {
+      width: 2.2rem;
+      height: auto;
+    }
+
+    @media (min-width: 1024px) {
+      width: 3rem;
+    }
+  }
+
+  .address {
+    max-width: 70ch;
+    font-size: 1rem;
+    text-align: justify;
+
+    @media (min-width: 768px) {
+      font-size: 1.4rem;
+      text-align: left;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @media (min-width: 1024px) {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+    }
+  }
+
+  .details {
+    width: min(100%, 27.1875rem);
+    margin: 0 auto;
+  }
+</style>
