@@ -30,6 +30,10 @@ const { label }: Props = Astro.props;
     cursor: pointer;
     border-bottom: 0.0625rem solid var(--secondary);
     font-size: 1.4rem;
+
+    @media (min-width: 1024px) {
+      font-size: 1.6rem;
+    }
   }
 
   .icon {
@@ -46,10 +50,12 @@ const { label }: Props = Astro.props;
 
   .content {
     padding: 1.5rem 1rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+    border-bottom-right-radius: 0.4rem;
+    border-bottom-left-radius: 0.4rem;
 
     @media (min-width: 1024px) {
       padding: 1rem 1.5rem;
-      padding-bottom: 0;
     }
   }
 
