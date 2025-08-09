@@ -89,7 +89,7 @@ export function Nav({ guest }: Props) {
       <nav hidden={!visible} className={styles.nav}>
         <div className={styles.menu}>
           <div className={styles.list}>
-            <ul>
+            <ul className={styles.links}>
               {navLinks
                 .filter((item) => item.invited !== false)
                 .map((item) => (
