@@ -5,6 +5,7 @@ import DressCode from "@components/organisms/DressCode/DressCode.astro";
 import GuestSection from "@components/organisms/Guest/Guest.astro";
 import Location from "@components/organisms/Location/Location.astro";
 import Table from "@components/organisms/Table/Table.astro";
+import Timeline from "@components/organisms/Timeline/Timeline.astro";
 import Layout from "@layouts/Layout.astro";
 import type { Guest } from "@models/types/guest";
 import { tables } from "../data.json";
@@ -30,5 +31,6 @@ export function getStaticPaths() {
   <Date />
   <Location />
   <DressCode />
+  <Timeline />
   {guest && <Table guest={guest} />}
 </Layout>

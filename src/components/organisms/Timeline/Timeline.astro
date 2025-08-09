@@ -1,0 +1,206 @@
+---
+import ArrivalIcon from "@public/icons/arrival.svg";
+import VideoIcon from "@public/icons/video.svg";
+import CeremonyIcon from "@public/icons/ceremony.svg";
+import DanceIcon from "@public/icons/dance.svg";
+import ToastIcon from "@public/icons/toast.svg";
+import AppetizersIcon from "@public/icons/appetizers.svg";
+import BouquetIcon from "@public/icons/bouquet.svg";
+import PartyIcon from "@public/icons/party.svg";
+import CakeIcon from "@public/icons/cake.svg";
+import { Image } from "astro:assets";
+
+type TimelineItem = {
+  description: string;
+  icon: ((_props: astroHTML.JSX.SVGAttributes) => any) & ImageMetadata;
+};
+
+const items: TimelineItem[] = [
+  { description: "Entrada de los novios", icon: ArrivalIcon },
+  { description: "Video especial", icon: VideoIcon },
+  { description: "Ceremonia civil", icon: CeremonyIcon },
+  { description: "Baile", icon: DanceIcon },
+  { description: "Brindis", icon: ToastIcon },
+  { description: "Aperitivos y bebidas", icon: AppetizersIcon },
+  { description: "Dinámica de ramo", icon: BouquetIcon },
+  { description: "Hora loca", icon: PartyIcon },
+  { description: "Torta", icon: CakeIcon },
+];
+---
+
+<section id="timeline" class="host">
+  <h2 class="title">Itinerario</h2>
+
+  <div class="container">
+    <div class="base"></div>
+    <ul class="list">
+      {
+        items.map((item, idx) => (
+          <li
+            class={`list-item list-item--${idx % 2 === 0 ? "left" : "right"}`}
+          >
+            <span
+              class={`timeline__connector timeline__connector--${idx % 2 === 0 ? "left" : "right"}`}
+            />
+            <div class="item">
+              <item.icon
+                class="icon"
+                width={80}
+                height={80}
+                color="var(--primary-dark)"
+              />
+              <h3 class="item__title">{item.description}</h3>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.5rem;
+    padding: 3rem 1rem;
+
+    @media (min-width: 768px) {
+      padding: 4rem 1.5rem 2.5rem;
+      gap: 5rem;
+    }
+  }
+
+  .title {
+    font-size: 2.4rem;
+
+    @media (min-width: 768px) {
+      font-size: 3rem;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 3.8rem;
+    }
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    max-width: 17rem;
+    margin: 0 auto;
+
+    @media (min-width: 375px) {
+      max-width: 327px;
+    }
+
+    @media (min-width: 1024px) {
+      max-width: 37.5rem;
+    }
+  }
+
+  .base {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background-color: var(--primary-50);
+    z-index: 0;
+    border-radius: 2px;
+  }
+
+  .timeline__connector {
+    position: absolute;
+    width: 1.8rem;
+    height: 0.25rem;
+    background-color: var(--primary-50);
+    z-index: 1;
+    border-radius: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @media (min-width: 375px) {
+      width: 3.1rem;
+    }
+
+    @media (min-width: 1024px) {
+      width: 6.2rem;
+    }
+  }
+
+  .timeline__connector--right {
+    right: 100%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .timeline__connector--left {
+    left: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+  }
+
+  .list-item {
+    display: flex;
+    max-width: 40%;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 1rem;
+
+    @media (min-width: 1024px) {
+      padding: 0 2.5rem;
+    }
+  }
+
+  .list-item--left {
+    align-self: flex-start;
+  }
+  .list-item--right {
+    align-self: flex-end;
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--white);
+  }
+
+  .divider {
+    margin-block: 2rem;
+  }
+
+  .icon {
+    @media (min-width: 1024px) {
+      width: 7.5rem;
+      height: 7.5rem;
+    }
+  }
+
+  .item__title {
+    max-width: 5rem;
+    font-size: 1rem;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      font-size: 1.1rem;
+    }
+
+    @media (min-width: 1024px) {
+      max-width: 7.5rem;
+      font-size: 1.4rem;
+    }
+  }
+</style>
