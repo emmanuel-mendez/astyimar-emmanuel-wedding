@@ -1,0 +1,34 @@
+---
+import DressIcon from "@public/icons/dress.svg";
+import SuitIcon from "@public/icons/suit.svg";
+---
+
+<section id="dress-code" class="host">
+  <div class="head">
+    <h2 class="title">Código de Vestimenta</h2>
+    <p class="description">Formal</p>
+  </div>
+
+  <div class="body">
+    <div class="item">
+      <DressIcon class="item__icon" width={100} height={100} />
+      <p class="item__description">Color blanco reservado para la novia</p>
+    </div>
+
+    <div class="item">
+      <SuitIcon class="item__icon" width={100} height={100} />
+      <p class="item__description">
+        Color azul celeste se reserva para el novio
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .host {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    gap: 1rem;
+  }
+</style>

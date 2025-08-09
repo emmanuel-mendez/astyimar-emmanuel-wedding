@@ -1,9 +1,11 @@
 ---
-import ScheduleIcon from "/public/icons/schedule.svg";
+import ScheduleIcon from "@public/icons/schedule.svg";
 ---
 
 <a href="#">
-  <ScheduleIcon />
+  <div class="icon">
+    <ScheduleIcon width={24} height={24} fill="var(--primary)" />
+  </div>
   <p>
     <span class="line">Confirma</span>
     <span class="line">tu asistencia</span>
@@ -33,11 +35,15 @@ import ScheduleIcon from "/public/icons/schedule.svg";
     }
   }
 
-  img {
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 2.5rem;
     background-color: var(--primary);
     padding: 0.5rem;
     border-radius: 50%;
+    margin: 0 auto;
   }
 
   p {

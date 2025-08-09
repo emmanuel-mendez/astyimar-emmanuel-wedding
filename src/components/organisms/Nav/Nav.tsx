@@ -1,5 +1,5 @@
+import type { Guest } from "@models/types/guest";
 import { useEffect, useState } from "preact/hooks";
-import type { Guest } from "../../../models/types/guest";
 import styles from "./styles.module.css";
 
 interface Props {

@@ -1,9 +1,9 @@
 ---
+import Float from "@components/atoms/Float.astro";
+import Footer from "@components/organisms/Footer/Footer.astro";
+import Header from "@components/organisms/Header/Header.astro";
+import type { Guest } from "@models/types/guest";
 import "../../styles/main.css";
-import Float from "../components/atoms/Float.astro";
-import Footer from "../components/organisms/Footer/Footer.astro";
-import Header from "../components/organisms/Header/Header.astro";
-import type { Guest } from "../models/types/guest";
 
 interface Props {
   guest?: Guest;
