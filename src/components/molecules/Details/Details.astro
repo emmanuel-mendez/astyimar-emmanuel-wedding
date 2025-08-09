@@ -1,5 +1,5 @@
 ---
-import SummaryArrow from "/public/icons/summary-arrow.svg";
+import SummaryArrowIcon from "/public/icons/summary-arrow.svg";
 
 interface Props {
   label: string;
@@ -12,7 +12,7 @@ const { label }: Props = Astro.props;
   <summary>
     {label}
     <span class="icon" aria-hidden="true">
-      <SummaryArrow class="icon" width={24} height={24} />
+      <SummaryArrowIcon class="icon" width={24} height={24} />
     </span>
   </summary>
   <div class="content">

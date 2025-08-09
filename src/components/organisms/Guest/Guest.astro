@@ -1,6 +1,7 @@
 ---
-import { Image } from "astro:assets";
 import type { Guest } from "../../../models/types/guest";
+import CupsIcon from "/public/icons/cups.svg";
+import TicketIcon from "/public/icons/ticket.svg";
 
 interface Props {
   guest?: Guest;
@@ -34,13 +35,8 @@ const { guest } = Astro.props;
                   {guest.coupon > 1 ? "cupones" : "cupón"}. Por cada cupón que
                   tengas podrás asistir con un acompañante extra.
                 </span>
-                <Image
-                  src="/icons/ticket.svg"
-                  alt="Coupon"
-                  width={300}
-                  height={200}
-                  class="coupon__image"
-                />
+
+                <TicketIcon class="coupon__image" width={300} height={200} />
               </p>
             ) : (
               <p>
@@ -48,13 +44,7 @@ const { guest } = Astro.props;
                   El destino nos unió y queremos que seas parte de este capítulo
                   tan importante en nuestras vidas. ¡Acompáñanos!
                 </span>
-                <Image
-                  src="/icons/cups.svg"
-                  alt="Rings"
-                  width={300}
-                  height={200}
-                  class="coupon__image"
-                />
+                <CupsIcon class="coupon__image" width={300} height={200} />
               </p>
             )}
           </div>

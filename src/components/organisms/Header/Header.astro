@@ -1,7 +1,7 @@
 ---
-import { Image } from "astro:assets";
-import { Nav } from "../Nav/Nav";
 import type { Guest } from "../../../models/types/guest";
+import { Nav } from "../Nav/Nav";
+import LogoIcon from "/public/icons/logo.svg";
 
 interface Props {
   guest?: Guest;
@@ -12,13 +12,10 @@ const { guest } = Astro.props;
 
 <header>
   <div class="container">
-    <Image
+    <LogoIcon
       class="logo"
-      src="/icons/logo.svg"
       width="90"
       height="52"
-      alt="Logo"
-      priority
       onclick="window.scrollTo({top: 0});"
     />
 
