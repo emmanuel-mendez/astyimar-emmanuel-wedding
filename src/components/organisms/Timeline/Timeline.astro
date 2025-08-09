@@ -32,15 +32,15 @@ const items: TimelineItem[] = [
   <h2 class="title">Itinerario</h2>
 
   <div class="container">
-    <div class="base"></div>
-    <ul class="list">
+    <div class="list">
+      <div class="base"></div>
       {
-        items.map((item, idx) => (
-          <li
-            class={`list-item list-item--${idx % 2 === 0 ? "left" : "right"}`}
+        items.map((item, itemIndex) => (
+          <div
+            class={`list-item list-item--${itemIndex % 2 === 0 ? "left" : "right"}`}
           >
             <span
-              class={`timeline__connector timeline__connector--${idx % 2 === 0 ? "left" : "right"}`}
+              class={`timeline__connector timeline__connector--${itemIndex % 2 === 0 ? "left" : "right"}`}
             />
             <div class="item">
               <item.icon
@@ -51,10 +51,10 @@ const items: TimelineItem[] = [
               />
               <h3 class="item__title">{item.description}</h3>
             </div>
-          </li>
+          </div>
         ))
       }
-    </ul>
+    </div>
   </div>
 </section>
 
@@ -94,8 +94,27 @@ const items: TimelineItem[] = [
       max-width: 327px;
     }
 
+    @media (min-width: 768px) {
+      max-width: 27.1875rem;
+    }
+
     @media (min-width: 1024px) {
       max-width: 37.5rem;
+      height: 22.2rem;
+      transform: scale(0.6) scaleY(-1) rotate(-90deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (min-width: 1280px) {
+      height: 30rem;
+      transform: scale(0.8) scaleY(-1) rotate(-90deg);
+    }
+
+    @media (min-width: 1600px) {
+      height: 37.5rem;
+      transform: scale(1) scaleY(-1) rotate(-90deg);
     }
   }
 
@@ -109,6 +128,11 @@ const items: TimelineItem[] = [
     background-color: var(--primary-50);
     z-index: 0;
     border-radius: 2px;
+
+    @media (min-width: 1024px) {
+      top: 0;
+      height: 100%;
+    }
   }
 
   .timeline__connector {
@@ -123,6 +147,10 @@ const items: TimelineItem[] = [
 
     @media (min-width: 375px) {
       width: 3.1rem;
+    }
+
+    @media (min-width: 768px) {
+      width: 5.3rem;
     }
 
     @media (min-width: 1024px) {
@@ -145,8 +173,12 @@ const items: TimelineItem[] = [
   .list {
     display: flex;
     flex-direction: column;
-    list-style: none;
     padding: 0;
+
+    @media (min-width: 1024px) {
+      position: relative;
+      width: 37.5rem;
+    }
   }
 
   .list-item {
@@ -176,6 +208,10 @@ const items: TimelineItem[] = [
     align-items: center;
     gap: 0.5rem;
     background-color: var(--white);
+
+    @media (min-width: 1024px) {
+      transform: rotate(-90deg);
+    }
   }
 
   .divider {
@@ -183,9 +219,14 @@ const items: TimelineItem[] = [
   }
 
   .icon {
+    @media (min-width: 768px) {
+      width: 6.25rem;
+      height: 6.25rem;
+    }
     @media (min-width: 1024px) {
       width: 7.5rem;
       height: 7.5rem;
+      transform: scaleX(-1);
     }
   }
 
@@ -196,11 +237,13 @@ const items: TimelineItem[] = [
 
     @media (min-width: 768px) {
       font-size: 1.1rem;
+      max-width: 6.25rem;
     }
 
     @media (min-width: 1024px) {
       max-width: 7.5rem;
       font-size: 1.4rem;
+      transform: scaleX(-1);
     }
   }
 </style>
