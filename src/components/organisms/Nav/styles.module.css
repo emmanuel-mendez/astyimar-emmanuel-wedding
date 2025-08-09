@@ -2,9 +2,8 @@
   border: none;
   background-color: transparent;
   outline: none;
-}
-@media (min-width: 1280px) {
-  .toggle {
+
+  @media (min-width: 1280px) {
     display: none;
   }
 }
@@ -43,9 +42,8 @@
   width: 100%;
   overflow: hidden;
   pointer-events: none;
-}
-@media (min-width: 1280px) {
-  .nav {
+
+  @media (min-width: 1280px) {
     position: static;
     width: auto;
   }
@@ -67,9 +65,8 @@
   transition: right 0.4s ease-in-out;
   overflow-y: auto;
   pointer-events: auto;
-}
-@media (min-width: 1280px) {
-  .menu {
+
+  @media (min-width: 1280px) {
     width: auto;
     height: auto;
     padding: 1rem 0;
@@ -79,9 +76,8 @@
 
 .nav[hidden] .menu {
   right: -100%;
-}
-@media (min-width: 1280px) {
-  .nav[hidden] .menu {
+
+  @media (min-width: 1280px) {
     right: 0;
   }
 }
@@ -91,10 +87,9 @@
   width: min(100%, 28.125rem);
   align-items: flex-start;
   flex-direction: column;
-  gap: 1.8rem;
-}
-@media (min-width: 1280px) {
-  .list {
+  gap: 2rem;
+
+  @media (min-width: 1280px) {
     flex-direction: row;
     width: unset;
     align-items: center;
@@ -105,10 +100,9 @@
 ul {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-}
-@media (min-width: 1280px) {
-  ul {
+  gap: 2rem;
+
+  @media (min-width: 1280px) {
     flex-direction: row;
     gap: 1.8rem;
   }
@@ -133,9 +127,8 @@ ul {
   grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   place-items: center;
-}
-@media (min-width: 1280px) {
-  .cats {
+
+  @media (min-width: 1280px) {
     display: none;
   }
 }
