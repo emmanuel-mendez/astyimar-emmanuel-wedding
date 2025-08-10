@@ -29,11 +29,11 @@ const { guest } = Astro.props;
           <div class="coupon">
             {guest.coupon ? (
               <p>
-                <span>
-                  ¡Qué emoción! Dispones de
+                <span class="line">¡Qué emoción!</span>
+                <span class="line">
+                  Puedes asistir con
                   <span class="highlight">({guest.coupon})</span>
-                  {guest.coupon > 1 ? "cupones" : "cupón"}. Por cada cupón que
-                  tengas podrás asistir con un acompañante extra.
+                  {guest.coupon > 1 ? "acompañantes" : "acompañante"} extra.
                 </span>
 
                 <TicketIcon class="coupon__image" width={300} height={200} />
@@ -102,7 +102,7 @@ const { guest } = Astro.props;
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.6);
     z-index: 1;
     pointer-events: none;
   }
@@ -117,7 +117,7 @@ const { guest } = Astro.props;
   .container {
     display: flex;
     flex-direction: column;
-    padding: 3rem 1.75rem 9rem;
+    padding: 2rem 1.75rem 9rem;
     gap: 1.6rem;
 
     @media (min-width: 768px) {
@@ -196,6 +196,10 @@ const { guest } = Astro.props;
       padding: 2.5rem;
       font-size: 1.8rem;
     }
+  }
+
+  .line {
+    display: block;
   }
 
   .coupon__image {
