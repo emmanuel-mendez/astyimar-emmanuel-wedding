@@ -1,0 +1,56 @@
+---
+import { Nav } from "@components/organisms/Nav/Nav";
+import type { Guest } from "@models/types/guest";
+import LogoIcon from "@public/icons/logo.svg";
+
+interface Props {
+  guest?: Guest;
+}
+
+const { guest } = Astro.props;
+---
+
+<header>
+  <div class="container">
+    <LogoIcon
+      class="logo"
+      width="90"
+      height="52"
+      onclick="window.scrollTo({top: 0});"
+    />
+
+    <Nav client:load guest={guest} />
+  </div>
+</header>
+
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    background-color: var(--white);
+    padding: 1rem 1.5rem;
+    box-shadow: 0.0625rem 0.0625rem 0.25rem rgba(0, 0, 0, 0.1) inset;
+    z-index: 2;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: min(100%, 80rem);
+  }
+
+  .logo {
+    cursor: pointer;
+    -webkit-filter: drop-shadow(0.0625rem 0 0.1875rem var(--primary-dark));
+    filter: drop-shadow(0.0625rem 0 0.1875rem var(--primary-dark));
+
+    @media (min-width: 1280px) {
+      width: 6.875rem;
+      height: auto;
+      aspect-ratio: 90 / 52;
+    }
+  }
+</style>

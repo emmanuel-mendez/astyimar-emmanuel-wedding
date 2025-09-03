@@ -1,15 +1,14 @@
 ---
-import Table from "../components/organisms/Table.astro";
-import Layout from "../layouts/Layout.astro";
+import Banner from "@components/organisms/Banner/Banner.astro";
+import Date from "@components/organisms/Date/Date.astro";
+import DressCode from "@components/organisms/DressCode/DressCode.astro";
+import GuestSection from "@components/organisms/Guest/Guest.astro";
+import Location from "@components/organisms/Location/Location.astro";
+import Table from "@components/organisms/Table/Table.astro";
+import Timeline from "@components/organisms/Timeline/Timeline.astro";
+import Layout from "@layouts/Layout.astro";
+import type { Guest } from "@models/types/guest";
 import { tables } from "../data.json";
-import Intro from "../components/organisms/Intro.astro";
-import Banner from "../components/organisms/Banner.astro";
-
-export type Guest = {
-  id: string;
-  name: string;
-  coupon?: number;
-};
 
 export const allGuests: Guest[] = tables.flat();
 
@@ -26,9 +25,12 @@ export function getStaticPaths() {
 }
 ---
 
-<Layout>
+<Layout guest={guest}>
   <Banner />
-  {guest && <Intro guest={guest} />}
-
+  {guest && <GuestSection guest={guest} />}
+  <Date />
+  <Location />
+  <DressCode />
+  <Timeline />
   {guest && <Table guest={guest} />}
 </Layout>

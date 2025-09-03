@@ -1,8 +1,16 @@
 ---
-import Banner from "../components/organisms/Banner.astro";
-import Layout from "../layouts/Layout.astro";
+import Banner from "@components/organisms/Banner/Banner.astro";
+import Date from "@components/organisms/Date/Date.astro";
+import DressCode from "@components/organisms/DressCode/DressCode.astro";
+import Location from "@components/organisms/Location/Location.astro";
+import Timeline from "@components/organisms/Timeline/Timeline.astro";
+import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout>
   <Banner />
+  <Date />
+  <Location />
+  <DressCode />
+  <Timeline />
 </Layout>
