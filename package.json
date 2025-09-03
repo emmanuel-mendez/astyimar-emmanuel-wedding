@@ -9,8 +9,12 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.7",
     "@astrojs/preact": "^4.1.0",
     "astro": "^5.12.4",
     "preact": "^10.27.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.33.2"
   }
 }
