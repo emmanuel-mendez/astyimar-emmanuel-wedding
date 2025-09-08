@@ -1,6 +1,6 @@
 ---
 import Details from "@components/molecules/Details/Details.astro";
-import { Image } from "astro:assets";
+import LocationIcon from "@public/icons/location.svg";
 ---
 
 <section id="location" class="host">
@@ -9,13 +9,7 @@ import { Image } from "astro:assets";
       <h2 class="title">
         <span>Recepción</span>
 
-        <Image
-          src="/images/location__heart.webp"
-          alt="Location"
-          width={24}
-          height={24}
-          class="title__icon"
-        />
+        <LocationIcon width={30} height={30} class="title__icon" />
       </h2>
 
       <p class="address">
@@ -23,7 +17,7 @@ import { Image } from "astro:assets";
         <span>
           Primera avenida con Calle 7 de Propatria, edificio 4 piso 1 Frente a
           los talleres del metro, a una cuadra de la estación, Caracas 1030,
-          Distrito Capital
+          Distrito Capital.
         </span>
       </p>
     </div>
@@ -116,7 +110,7 @@ import { Image } from "astro:assets";
 
   .title {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
     gap: 0.2ch;
     font-size: 2rem;

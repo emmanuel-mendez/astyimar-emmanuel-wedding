@@ -1,0 +1,360 @@
+---
+import Copy from "@components/molecules/Copy/Copy";
+import CopyIcon from "@public/icons/copy.svg";
+import GiftIcon from "@public/icons/gift.svg";
+
+const pagoMovilItems = [
+  {
+    key: "Banco",
+    value: "0105",
+    label: "Banco Mercantil (0105)",
+  },
+  {
+    key: "Teléfono",
+    value: "04142156802",
+    label: "0414-2156802",
+  },
+  {
+    key: "Cédula",
+    value: "27794231",
+    label: "27.794.231",
+  },
+];
+---
+
+<section class="host">
+  <div class="container">
+    <div class="column">
+      <h2 class="title">
+        <span>Regalos</span>
+        <GiftIcon class="icon--gift" width={42} height={42} />
+      </h2>
+
+      <div class="intro">
+        <p class="description">
+          <span class="description__block">
+            Tu presencia es el mejor regalo de todos. Si deseas impulsar
+            nuestros primeros pasos como casados puedes regalarnos algo
+            especial, lo recibiremos con mucho amor y gratitud.
+          </span>
+          <span class="description__block"
+            >¡Gracias por tu cariño y apoyo incondicional!</span
+          >
+        </p>
+      </div>
+    </div>
+
+    <div class="column">
+      <p class="subtitle">
+        <span class="subtitle__block">¿Aún no sabes qué regalarnos?</span>
+        <span class="subtitle__block">Aquí tienes algunas ideas:</span>
+      </p>
+
+      <div class="card">
+        <ol class="list">
+          <li class="item">
+            <div class="item__header">
+              <h4 class="item__title">Dinero en Efectivo</h4>
+            </div>
+            <p class="item__description">
+              Recuerda colocarlo en un sobre, no desperdicies la oportinidad de
+              incluir un mensaje personalizado.
+            </p>
+          </li>
+          <li class="item">
+            <div class="item__header">
+              <h4 class="item__title">Pago móvil</h4>
+              <p class="item__description">
+                Realiza tu aporte el día del evento.
+              </p>
+            </div>
+            <ul class="sublist sublist--copy">
+              {
+                pagoMovilItems.map((item) => (
+                  <li class="subitem subitem--copy">
+                    <Copy client:visible value={item.value}>
+                      <p class="copy">{`${item.key}: ${item.label}`}</p>
+                      <CopyIcon class="icon--copy" width={16} height={16} />
+                    </Copy>
+                  </li>
+                ))
+              }
+            </ul>
+          </li>
+          <li class="item">
+            <div class="item__header">
+              <h4 class="item__title">Artículos para el hogar.</h4>
+
+              <p class="subitem__description">
+                Consulta con los novios para asegurarte de que tu idea es única.
+              </p>
+            </div>
+
+            <ul class="sublist sublist--home">
+              <li class="subitem">Licuadora</li>
+              <li class="subitem">Microondas</li>
+              <li class="subitem">Aspiradora</li>
+              <li class="subitem">Freidora de aire</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .host {
+    position: relative;
+  }
+
+  .host::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url("/images/location-background.webp");
+    background-size: cover;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.5;
+    pointer-events: none;
+    transition: background-image 0.3s;
+
+    @media (min-width: 768px) {
+      background-image: url("/images/location-background--tablet.webp");
+    }
+
+    @media (min-width: 1024px) {
+      background-image: url("/images/location-background--desktop.webp");
+      opacity: 0.2;
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem 1.5rem;
+
+    @media (min-width: 1024px) {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 6rem 2rem 8rem;
+      gap: 4rem;
+    }
+
+    @media (min-width: 85.375rem) {
+      padding: 6rem 2rem 10rem;
+      gap: 4.5rem;
+    }
+  }
+
+  .container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5rem;
+    width: 100%;
+    background-image: linear-gradient(to bottom, white, transparent);
+
+    @media (min-width: 1024px) {
+      height: 7rem;
+    }
+  }
+
+  .container::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2rem;
+    width: 100%;
+    background-image: linear-gradient(to top, white, transparent);
+
+    @media (min-width: 1024px) {
+      height: 7rem;
+    }
+  }
+
+  .column {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    @media (min-width: 1024px) {
+      justify-content: center;
+      gap: 2rem;
+    }
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 1.5rem;
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 0.25rem;
+    gap: 2rem;
+
+    @media (min-width: 1024px) {
+      padding: 3rem;
+    }
+  }
+
+  .title {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.25ch;
+    font-size: 2.4rem;
+
+    @media (min-width: 768px) {
+      font-size: 2.8rem;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 3.8rem;
+    }
+  }
+
+  .intro {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.6rem;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      font-size: 2rem;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 2.8rem;
+    }
+  }
+
+  .subtitle__block {
+    display: block;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    list-style-type: decimal;
+    padding-left: 1.4rem;
+
+    @media (min-width: 1024px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5rem;
+    }
+  }
+
+  .item {
+    font-size: 1.4rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.8rem;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 2.2rem;
+    }
+  }
+
+  .description,
+  .item__description,
+  .subitem__description,
+  .copy {
+    font-size: 1.2rem;
+    font-weight: normal;
+
+    @media (min-width: 768px) {
+      font-size: 1.6rem;
+    }
+  }
+
+  .description__block {
+    display: block;
+  }
+
+  .item__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+
+    @media (min-width: 1024px) {
+      margin-bottom: 1.6rem;
+      gap: 1rem;
+    }
+  }
+
+  .sublist {
+    gap: 1.6rem;
+    list-style-type: disc;
+  }
+
+  .sublist--copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    list-style: none;
+    padding-left: 0;
+
+    @media (min-width: 1024px) {
+      align-items: flex-start;
+    }
+  }
+
+  .sublist--home {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+    row-gap: 0.5rem;
+    padding-left: 1.6rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .subitem,
+  .copy {
+    font-size: 1rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.4rem;
+    }
+  }
+
+  .icon--copy {
+    color: var(--secondary);
+
+    @media (min-width: 1024px) {
+      width: 1.375rem;
+      height: 1.375rem;
+    }
+  }
+
+  .icon--gift {
+    @media (min-width: 1024px) {
+      width: 3.625rem;
+      height: 3.625rem;
+    }
+  }
+
+  .subitem--copy:focus .icon--copy,
+  .subitem--copy:hover .icon--copy {
+    color: var(--white);
+  }
+</style>
