@@ -9,6 +9,7 @@ import Timeline from "@components/organisms/Timeline/Timeline.astro";
 import Layout from "@layouts/Layout.astro";
 import type { Guest } from "@models/types/guest";
 import { tables } from "../data.json";
+import Gifts from "@components/organisms/Gifts/Gifts.astro";
 
 export const allGuests: Guest[] = tables.flat();
 
@@ -32,5 +33,6 @@ export function getStaticPaths() {
   <Location />
   <DressCode />
   <Timeline />
+  <Gifts />
   {guest && <Table guest={guest} />}
 </Layout>
