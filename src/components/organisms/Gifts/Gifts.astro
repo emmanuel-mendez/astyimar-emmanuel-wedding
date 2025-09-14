@@ -51,7 +51,7 @@ const pagoMovilItems = [
       </p>
 
       <div class="card">
-        <ol class="list">
+        <ul class="list">
           <li class="item">
             <div class="item__header">
               <h4 class="item__title">Dinero en Efectivo</h4>
@@ -81,23 +81,7 @@ const pagoMovilItems = [
               }
             </ul>
           </li>
-          <li class="item">
-            <div class="item__header">
-              <h4 class="item__title">Artículos para el hogar.</h4>
-
-              <p class="subitem__description">
-                Consulta con los novios para asegurarte de que tu idea es única.
-              </p>
-            </div>
-
-            <ul class="sublist sublist--home">
-              <li class="subitem">Licuadora</li>
-              <li class="subitem">Microondas</li>
-              <li class="subitem">Aspiradora</li>
-              <li class="subitem">Freidora de aire</li>
-            </ul>
-          </li>
-        </ol>
+        </ul>
       </div>
     </div>
   </div>
@@ -193,6 +177,7 @@ const pagoMovilItems = [
   }
 
   .card {
+    width: min(600px, 100%);
     display: flex;
     flex-direction: column;
     padding: 3rem 1.5rem;
@@ -200,6 +185,7 @@ const pagoMovilItems = [
     color: var(--white);
     border-radius: 0.25rem;
     gap: 2rem;
+    align-self: center;
 
     @media (min-width: 1024px) {
       padding: 3rem;
@@ -248,13 +234,10 @@ const pagoMovilItems = [
     display: flex;
     flex-direction: column;
     gap: 3rem;
-    list-style-type: decimal;
-    padding-left: 1.4rem;
+    list-style: none;
 
     @media (min-width: 1024px) {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 5rem;
+      gap: 3.5rem;
     }
   }
 
@@ -310,22 +293,6 @@ const pagoMovilItems = [
     gap: 0.6rem;
     list-style: none;
     padding-left: 0;
-
-    @media (min-width: 1024px) {
-      align-items: flex-start;
-    }
-  }
-
-  .sublist--home {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 2rem;
-    row-gap: 0.5rem;
-    padding-left: 1.6rem;
-
-    @media (min-width: 768px) {
-      grid-template-columns: 1fr;
-    }
   }
 
   .subitem,
