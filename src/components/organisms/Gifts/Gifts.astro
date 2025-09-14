@@ -23,100 +23,70 @@ const pagoMovilItems = [
 ---
 
 <section class="host">
-  <div class="container">
-    <div class="column">
-      <h2 class="title">
-        <span>Regalos</span>
-        <GiftIcon class="icon--gift" width={42} height={42} />
-      </h2>
+  <div class="column">
+    <h2 class="title">
+      <span>Regalos</span>
+      <GiftIcon class="icon--gift" width={42} height={42} />
+    </h2>
 
-      <div class="intro">
-        <p class="description">
-          <span class="description__block">
-            Tu presencia es el mejor regalo de todos. Si deseas impulsar
-            nuestros primeros pasos como casados puedes regalarnos algo
-            especial, lo recibiremos con mucho amor y gratitud.
-          </span>
-          <span class="description__block"
-            >¡Gracias por tu cariño y apoyo incondicional!</span
-          >
-        </p>
-      </div>
-    </div>
-
-    <div class="column">
-      <p class="subtitle">
-        <span class="subtitle__block">¿Aún no sabes qué regalarnos?</span>
-        <span class="subtitle__block">Aquí tienes algunas ideas:</span>
+    <div class="intro">
+      <p class="description">
+        <span class="description__block">
+          Tu presencia es el mejor regalo de todos. Si deseas impulsar nuestros
+          primeros pasos como casados puedes regalarnos algo especial, lo
+          recibiremos con mucho amor y gratitud.
+        </span>
+        <span class="description__block"
+          >¡Gracias por tu cariño y apoyo incondicional!</span
+        >
       </p>
+    </div>
+  </div>
 
-      <div class="card">
-        <ul class="list">
-          <li class="item">
-            <div class="item__header">
-              <h4 class="item__title">Dinero en Efectivo</h4>
-            </div>
+  <div class="column">
+    <p class="subtitle">
+      <span class="subtitle__block">¿Aún no sabes qué regalarnos?</span>
+      <span class="subtitle__block">Aquí tienes algunas ideas:</span>
+    </p>
+
+    <div class="card">
+      <ul class="list">
+        <li class="item">
+          <div class="item__header">
+            <h4 class="item__title">Dinero en Efectivo</h4>
+          </div>
+          <p class="item__description">
+            Recuerda colocarlo en un sobre, no desperdicies la oportinidad de
+            incluir un mensaje personalizado.
+          </p>
+        </li>
+        <li class="item">
+          <div class="item__header">
+            <h4 class="item__title">Pago móvil</h4>
             <p class="item__description">
-              Recuerda colocarlo en un sobre, no desperdicies la oportinidad de
-              incluir un mensaje personalizado.
+              Realiza tu aporte el día del evento.
             </p>
-          </li>
-          <li class="item">
-            <div class="item__header">
-              <h4 class="item__title">Pago móvil</h4>
-              <p class="item__description">
-                Realiza tu aporte el día del evento.
-              </p>
-            </div>
-            <ul class="sublist sublist--copy">
-              {
-                pagoMovilItems.map((item) => (
-                  <li class="subitem subitem--copy">
-                    <Copy client:visible value={item.value}>
-                      <p class="copy">{`${item.key}: ${item.label}`}</p>
-                      <CopyIcon class="icon--copy" width={16} height={16} />
-                    </Copy>
-                  </li>
-                ))
-              }
-            </ul>
-          </li>
-        </ul>
-      </div>
+          </div>
+          <ul class="sublist sublist--copy">
+            {
+              pagoMovilItems.map((item) => (
+                <li class="subitem subitem--copy">
+                  <Copy client:visible value={item.value}>
+                    <p class="copy">{`${item.key}: ${item.label}`}</p>
+                    <CopyIcon class="icon--copy" width={16} height={16} />
+                  </Copy>
+                </li>
+              ))
+            }
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
 
 <style>
   .host {
-    position: relative;
-  }
-
-  .host::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-image: url("/images/location-background.webp");
-    background-size: cover;
-    background-position: right bottom;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    opacity: 0.5;
-    pointer-events: none;
-    transition: background-image 0.3s;
-
-    @media (min-width: 768px) {
-      background-image: url("/images/location-background--tablet.webp");
-    }
-
-    @media (min-width: 1024px) {
-      background-image: url("/images/location-background--desktop.webp");
-      opacity: 0.2;
-    }
-  }
-
-  .container {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -135,36 +105,7 @@ const pagoMovilItems = [
     }
   }
 
-  .container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 5rem;
-    width: 100%;
-    background-image: linear-gradient(to bottom, white, transparent);
-
-    @media (min-width: 1024px) {
-      height: 7rem;
-    }
-  }
-
-  .container::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2rem;
-    width: 100%;
-    background-image: linear-gradient(to top, white, transparent);
-
-    @media (min-width: 1024px) {
-      height: 7rem;
-    }
-  }
-
   .column {
-    position: relative;
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -180,7 +121,7 @@ const pagoMovilItems = [
     width: min(600px, 100%);
     display: flex;
     flex-direction: column;
-    padding: 3rem 1.5rem;
+    padding: 2rem 1.5rem;
     background-color: var(--primary);
     color: var(--white);
     border-radius: 0.25rem;
