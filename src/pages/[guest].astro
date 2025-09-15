@@ -10,8 +10,10 @@ import Timeline from "@components/organisms/Timeline/Timeline.astro";
 import Layout from "@layouts/Layout.astro";
 import type { Guest } from "@models/types/guest";
 import divider1Image from "@public/images/divider--1.png";
+import divider2Image from "@public/images/divider--2.png";
 import { Image } from "astro:assets";
 import { tables } from "../data.json";
+import Photo from "@components/atoms/Photo.astro";
 
 export const allGuests: Guest[] = tables.flat();
 
@@ -34,8 +36,10 @@ export function getStaticPaths() {
   <Date />
   <Location />
   <DressCode />
-  <Timeline />
+  <Photo />
   <Image class="divider divider--1" src={divider1Image} alt="Divider" />
+  <Timeline />
+  <Image class="divider divider--2" src={divider2Image} alt="Divider" />
   <Gifts />
   {guest && <Table guest={guest} />}
 </Layout>
@@ -46,7 +50,8 @@ export function getStaticPaths() {
     margin: 0 auto;
   }
 
-  .divider--1 {
-    width: min(27.1875rem, 80%);
+  .divider--1,
+  .divider--2 {
+    width: min(27.1875rem, 70%);
   }
 </style>

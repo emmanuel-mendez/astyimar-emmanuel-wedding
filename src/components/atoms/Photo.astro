@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+import photo1Image from "@public/images/photo--1.png";
+---
+
+<section class={"host"}>
+  <p class="description">
+    "Podemos construir este sueño juntos, mantenernos fuerte para siempre, ahora
+    nada nos detendrá. Y si este mundo se quedara sin amantes, seguiríamos
+    teniendonos el uno al otro, nada nos detendrá." - Nothing's gonna stop us
+    now.
+  </p>
+  <Image class={"image"} src={photo1Image} alt={"Getting engaged"} />
+</section>
+
+<style>
+  .host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+
+  .description {
+    position: relative;
+    font-size: 1.2rem;
+    max-width: 40ch;
+    font-style: italic;
+    padding-block: 1rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.6rem;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 2.4rem;
+    }
+  }
+
+  .description::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 0.0625rem;
+    background-color: var(--primary);
+  }
+
+  .description::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    height: 0.0625rem;
+    background-color: var(--primary);
+  }
+
+  .image {
+    width: min(600px, 100%);
+    height: auto;
+  }
+</style>
