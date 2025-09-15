@@ -1,6 +1,8 @@
 ---
 import Details from "@components/molecules/Details/Details.astro";
 import LocationIcon from "@public/icons/location.svg";
+import flower19Image from "@public/images/flower--19.png";
+import { Image } from "astro:assets";
 ---
 
 <section id="location" class="host">
@@ -13,24 +15,38 @@ import LocationIcon from "@public/icons/location.svg";
       </h2>
 
       <p class="address">
+        <Image
+          class={"address__flower address__flower--top"}
+          src={flower19Image}
+          alt={"Flower"}
+        />
+
         <span>Dirección:</span>
         <span>
           Primera avenida con Calle 7 de Propatria, edificio 4 piso 1 Frente a
           los talleres del metro, a una cuadra de la estación, Caracas 1030,
           Distrito Capital.
         </span>
+
+        <Image
+          class={"address__flower address__flower--bottom"}
+          src={flower19Image}
+          alt={"Flower"}
+        />
       </p>
     </div>
 
     <div class="content">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1706.072945312379!2d-66.95784449287744!3d10.50497520613601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5f0a050e1fd5%3A0x700b0dbc082a322c!2sSal%C3%B3n%20de%20Fiestas%20D'Galance!5e0!3m2!1sen!2sve!4v1754602589854!5m2!1sen!2sve"
-        width="800"
-        height="600"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="iframe">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1706.072945312379!2d-66.95784449287744!3d10.50497520613601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5f0a050e1fd5%3A0x700b0dbc082a322c!2sSal%C3%B3n%20de%20Fiestas%20D'Galance!5e0!3m2!1sen!2sve!4v1754602589854!5m2!1sen!2sve"
+          width="800"
+          height="600"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
 
       <div class="details">
         <Details label="¿Cómo llegar?">
@@ -51,7 +67,7 @@ import LocationIcon from "@public/icons/location.svg";
   .host {
     position: relative;
     z-index: 0;
-    padding: 2.5rem 1.5rem;
+    padding: 3rem 1.5rem;
     background: none;
     overflow: hidden;
 
@@ -89,7 +105,7 @@ import LocationIcon from "@public/icons/location.svg";
     z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
     max-width: 80rem;
     margin: 0 auto;
   }
@@ -109,7 +125,7 @@ import LocationIcon from "@public/icons/location.svg";
     align-items: baseline;
     justify-content: center;
     gap: 0.2ch;
-    font-size: 2rem;
+    font-size: 2.2rem;
 
     @media (min-width: 768px) {
       font-size: 3rem;
@@ -132,14 +148,52 @@ import LocationIcon from "@public/icons/location.svg";
   }
 
   .address {
-    max-width: 70ch;
+    position: relative;
+    max-width: 69ch;
     font-size: 1rem;
     text-align: justify;
+    padding: 1.6rem;
 
     @media (min-width: 768px) {
       font-size: 1.4rem;
       text-align: left;
     }
+  }
+
+  .address::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 1.3rem);
+    height: calc(100% - 1.3rem);
+    border: 0.125rem dotted var(--primary-50);
+  }
+
+  .address__flower {
+    position: absolute;
+    width: 2.5rem;
+    height: auto;
+  }
+
+  .address__flower--top {
+    top: 0;
+    left: 0;
+    transform: rotate(90deg);
+    width: 2.5rem;
+    height: auto;
+  }
+
+  .address__flower--bottom {
+    bottom: 0;
+    right: 0;
+    transform: rotate(260deg);
+    width: 2.5rem;
+    height: auto;
+  }
+
+  .address__paragraph {
   }
 
   .content {
@@ -151,6 +205,11 @@ import LocationIcon from "@public/icons/location.svg";
       display: grid;
       grid-template-columns: 1fr 18.75rem;
     }
+  }
+
+  .iframe {
+    border-radius: 0.25rem;
+    overflow: hidden;
   }
 
   .details {
