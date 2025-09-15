@@ -1,6 +1,10 @@
 ---
 import Copy from "@components/molecules/Copy/Copy";
 import CopyIcon from "@public/icons/copy.svg";
+import MoneyIcon from "@public/icons/money.svg";
+import BankIcon from "@public/icons/bank.svg";
+import flower1Image from "@public/images/flower--1.png";
+import { Image } from "astro:assets";
 
 const pagoMovilItems = [
   {
@@ -23,7 +27,7 @@ const pagoMovilItems = [
 
 <section class="host">
   <div class="column">
-    <h2 class="title">
+    <h2 class="title font--heading">
       <span>Regalos</span>
     </h2>
 
@@ -42,43 +46,50 @@ const pagoMovilItems = [
   </div>
 
   <div class="column">
-    <p class="subtitle">
-      <span class="subtitle__block">¿Aún no sabes qué regalarnos?</span>
-      <span class="subtitle__block">Aquí tienes algunas ideas:</span>
-    </p>
-
-    <div class="card">
-      <ul class="list">
-        <li class="item">
-          <div class="item__header">
-            <h4 class="item__title">Dinero en Efectivo</h4>
-          </div>
-          <p class="item__description">
-            Recuerda colocarlo en un sobre, no desperdicies la oportinidad de
-            incluir un mensaje personalizado.
-          </p>
-        </li>
-        <li class="item">
-          <div class="item__header">
-            <h4 class="item__title">Pago móvil</h4>
+    <div class="cards">
+      <div class="card">
+        <Image class={"card__flower"} src={flower1Image} alt={"Flower"} />
+        <ul class="list">
+          <li class="item">
+            <div class="item__header">
+              <h4 class="item__title">Dinero en Efectivo</h4>
+            </div>
             <p class="item__description">
-              Realiza tu aporte el día del evento.
+              Recuerda colocarlo en un sobre, no desperdicies la oportinidad de
+              incluir un mensaje personalizado.
             </p>
-          </div>
-          <ul class="sublist sublist--copy">
-            {
-              pagoMovilItems.map((item) => (
-                <li class="subitem subitem--copy">
-                  <Copy client:visible value={item.value}>
-                    <p class="copy">{`${item.key}: ${item.label}`}</p>
-                    <CopyIcon class="icon--copy" width={16} height={16} />
-                  </Copy>
-                </li>
-              ))
-            }
-          </ul>
-        </li>
-      </ul>
+          </li>
+        </ul>
+        <MoneyIcon class="icon--card icon--money" width={48} height={48} />
+      </div>
+
+      <div class="card">
+        <Image class={"card__flower"} src={flower1Image} alt={"Flower"} />
+
+        <ul class="list">
+          <li class="item">
+            <div class="item__header">
+              <h4 class="item__title">Transferencia Bancaria</h4>
+              <p class="item__description">
+                Realiza tu aporte el día del evento.
+              </p>
+            </div>
+            <ul class="sublist sublist--copy">
+              {
+                pagoMovilItems.map((item) => (
+                  <li class="subitem subitem--copy">
+                    <Copy client:visible value={item.value}>
+                      <p class="copy">{`${item.key}: ${item.label}`}</p>
+                      <CopyIcon class="icon--copy" width={16} height={16} />
+                    </Copy>
+                  </li>
+                ))
+              }
+            </ul>
+          </li>
+        </ul>
+        <BankIcon class="icon--card icon--bank" width={48} height={48} />
+      </div>
     </div>
   </div>
 </section>
@@ -115,26 +126,50 @@ const pagoMovilItems = [
     }
   }
 
+  .cards {
+    width: min(768px, 85%);
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+    gap: 1.5rem;
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+  }
+
   .card {
-    width: min(600px, 100%);
+    position: relative;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 2rem 1.5rem;
+    padding: 1.5rem;
     background-color: var(--primary);
     color: var(--white);
-    border-radius: 0.25rem;
+    border-radius: 0.3rem;
     gap: 2rem;
     align-self: center;
 
     @media (min-width: 1024px) {
-      padding: 3rem;
+      height: 100%;
+      padding: 2rem;
     }
   }
 
+  .card__flower {
+    position: absolute;
+    bottom: calc(100% - 1.2rem);
+    right: calc(100% - 1.2rem);
+    width: 2.25rem;
+    height: auto;
+  }
+
   .title {
+    position: relative;
     display: flex;
-    align-items: flex-end;
     font-size: 2.4rem;
+    justify-content: center;
 
     @media (min-width: 768px) {
       font-size: 2.8rem;
@@ -149,6 +184,7 @@ const pagoMovilItems = [
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
+    text-align: center;
   }
 
   .subtitle {
@@ -192,7 +228,6 @@ const pagoMovilItems = [
   }
 
   .description,
-  .item__description,
   .subitem__description,
   .copy {
     font-size: 1.2rem;
@@ -203,6 +238,18 @@ const pagoMovilItems = [
     }
   }
 
+  .item__title {
+    text-align: center;
+  }
+
+  .item__description {
+    text-align: center;
+    font-size: 1rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.4rem;
+    }
+  }
   .description__block {
     display: block;
   }
@@ -254,5 +301,16 @@ const pagoMovilItems = [
   .subitem--copy:focus .icon--copy,
   .subitem--copy:hover .icon--copy {
     color: var(--white);
+  }
+
+  .icon--card {
+    position: absolute;
+    top: calc(100% - 2rem);
+    left: calc(100% - 2rem);
+  }
+
+  .icon--bank {
+    background-color: var(--white);
+    border-radius: 50%;
   }
 </style>
