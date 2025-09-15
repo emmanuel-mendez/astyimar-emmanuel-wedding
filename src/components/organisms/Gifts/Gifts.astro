@@ -1,7 +1,11 @@
 ---
 import Copy from "@components/molecules/Copy/Copy";
 import CopyIcon from "@public/icons/copy.svg";
-import GiftIcon from "@public/icons/gift.svg";
+import MoneyIcon from "@public/icons/money.svg";
+import BankIcon from "@public/icons/bank.svg";
+import flower1Image from "@public/images/flower--1.png";
+import flower18Image from "@public/images/flower--18.png";
+import { Image } from "astro:assets";
 
 const pagoMovilItems = [
   {
@@ -22,48 +26,60 @@ const pagoMovilItems = [
 ];
 ---
 
-<section class="host">
-  <div class="container">
-    <div class="column">
-      <h2 class="title">
-        <span>Regalos</span>
-        <GiftIcon class="icon--gift" width={42} height={42} />
-      </h2>
+<section id="gifts" class="host">
+  <div class="column">
+    <h2 class="title font--heading">
+      <Image
+        class={"title__flower title__flower--top"}
+        src={flower18Image}
+        alt={"Flower"}
+      />
+      <span>Regalos</span>
+      <Image
+        class={"title__flower title__flower--bottom"}
+        src={flower18Image}
+        alt={"Flower"}
+      />
+    </h2>
 
-      <div class="intro">
-        <p class="description">
-          <span class="description__block">
-            Tu presencia es el mejor regalo de todos. Si deseas impulsar
-            nuestros primeros pasos como casados puedes regalarnos algo
-            especial, lo recibiremos con mucho amor y gratitud.
-          </span>
-          <span class="description__block"
-            >¡Gracias por tu cariño y apoyo incondicional!</span
-          >
-        </p>
-      </div>
-    </div>
-
-    <div class="column">
-      <p class="subtitle">
-        <span class="subtitle__block">¿Aún no sabes qué regalarnos?</span>
-        <span class="subtitle__block">Aquí tienes algunas ideas:</span>
+    <div class="intro">
+      <p class="description">
+        <span class="description__block">
+          Tu presencia es el mejor regalo de todos. Si deseas impulsar nuestros
+          primeros pasos como esposos lo recibiremos con mucho amor y gratitud.
+        </span>
+        <span class="description__block"
+          >¡Gracias por tu cariño y apoyo incondicional!</span
+        >
       </p>
+    </div>
+  </div>
 
+  <div class="column">
+    <div class="cards">
       <div class="card">
-        <ol class="list">
+        <Image class={"card__flower"} src={flower1Image} alt={"Flower"} />
+        <ul class="list">
           <li class="item">
             <div class="item__header">
               <h4 class="item__title">Dinero en Efectivo</h4>
             </div>
             <p class="item__description">
-              Recuerda colocarlo en un sobre, no desperdicies la oportinidad de
+              Recuerda colocarlo en un sobre, no desperdicies la oportunidad de
               incluir un mensaje personalizado.
             </p>
           </li>
+        </ul>
+        <MoneyIcon class="icon--card icon--money" width={48} height={48} />
+      </div>
+
+      <div class="card">
+        <Image class={"card__flower"} src={flower1Image} alt={"Flower"} />
+
+        <ul class="list">
           <li class="item">
             <div class="item__header">
-              <h4 class="item__title">Pago móvil</h4>
+              <h4 class="item__title">Transferencia Bancaria</h4>
               <p class="item__description">
                 Realiza tu aporte el día del evento.
               </p>
@@ -81,23 +97,8 @@ const pagoMovilItems = [
               }
             </ul>
           </li>
-          <li class="item">
-            <div class="item__header">
-              <h4 class="item__title">Artículos para el hogar.</h4>
-
-              <p class="subitem__description">
-                Consulta con los novios para asegurarte de que tu idea es única.
-              </p>
-            </div>
-
-            <ul class="sublist sublist--home">
-              <li class="subitem">Licuadora</li>
-              <li class="subitem">Microondas</li>
-              <li class="subitem">Aspiradora</li>
-              <li class="subitem">Freidora de aire</li>
-            </ul>
-          </li>
-        </ol>
+        </ul>
+        <BankIcon class="icon--card icon--bank" width={48} height={48} />
       </div>
     </div>
   </div>
@@ -105,38 +106,10 @@ const pagoMovilItems = [
 
 <style>
   .host {
-    position: relative;
-  }
-
-  .host::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-image: url("/images/location-background.webp");
-    background-size: cover;
-    background-position: right bottom;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    opacity: 0.5;
-    pointer-events: none;
-    transition: background-image 0.3s;
-
-    @media (min-width: 768px) {
-      background-image: url("/images/location-background--tablet.webp");
-    }
-
-    @media (min-width: 1024px) {
-      background-image: url("/images/location-background--desktop.webp");
-      opacity: 0.2;
-    }
-  }
-
-  .container {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    padding: 3rem 1.5rem;
+    padding: 4rem 1.5rem;
 
     @media (min-width: 1024px) {
       max-width: 80rem;
@@ -151,66 +124,65 @@ const pagoMovilItems = [
     }
   }
 
-  .container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 5rem;
-    width: 100%;
-    background-image: linear-gradient(to bottom, white, transparent);
-
-    @media (min-width: 1024px) {
-      height: 7rem;
-    }
-  }
-
-  .container::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2rem;
-    width: 100%;
-    background-image: linear-gradient(to top, white, transparent);
-
-    @media (min-width: 1024px) {
-      height: 7rem;
-    }
-  }
-
   .column {
-    position: relative;
     z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 1.6rem;
+    gap: 1.8rem;
 
     @media (min-width: 1024px) {
       justify-content: center;
-      gap: 2rem;
+      gap: 2.2rem;
+    }
+  }
+
+  .cards {
+    width: min(768px, 75%);
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+    gap: 1.5rem;
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
     }
   }
 
   .card {
+    position: relative;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 3rem 1.5rem;
+    padding: 1.5rem;
     background-color: var(--primary);
     color: var(--white);
-    border-radius: 0.25rem;
+    border-radius: 0.3rem;
     gap: 2rem;
+    align-self: center;
 
     @media (min-width: 1024px) {
-      padding: 3rem;
+      height: 100%;
+      padding: 2rem;
     }
   }
 
+  .card__flower {
+    position: absolute;
+    bottom: calc(100% - 1.2rem);
+    right: calc(100% - 1.2rem);
+    width: 2.25rem;
+    height: auto;
+  }
+
   .title {
+    margin: 0 auto;
+    width: max-content;
+    position: relative;
     display: flex;
-    align-items: flex-end;
-    gap: 0.25ch;
     font-size: 2.4rem;
+    justify-content: center;
+    padding: 0.5rem;
 
     @media (min-width: 768px) {
       font-size: 2.8rem;
@@ -221,10 +193,29 @@ const pagoMovilItems = [
     }
   }
 
+  .title__flower {
+    position: absolute;
+    width: 2.6rem;
+    height: auto;
+  }
+
+  .title__flower--top {
+    bottom: calc(100% - 2.25rem);
+    right: calc(100% - 0.5rem);
+    transform: rotate(45deg);
+  }
+
+  .title__flower--bottom {
+    top: calc(100% - 2.5rem);
+    left: calc(100% - 0.5rem);
+    transform: rotate(-15deg);
+  }
+
   .intro {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
+    text-align: center;
   }
 
   .subtitle {
@@ -248,13 +239,10 @@ const pagoMovilItems = [
     display: flex;
     flex-direction: column;
     gap: 3rem;
-    list-style-type: decimal;
-    padding-left: 1.4rem;
+    list-style: none;
 
     @media (min-width: 1024px) {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 5rem;
+      gap: 3.5rem;
     }
   }
 
@@ -271,7 +259,6 @@ const pagoMovilItems = [
   }
 
   .description,
-  .item__description,
   .subitem__description,
   .copy {
     font-size: 1.2rem;
@@ -282,6 +269,23 @@ const pagoMovilItems = [
     }
   }
 
+  .description {
+    margin: 0 auto;
+    max-width: 50ch;
+  }
+
+  .item__title {
+    text-align: center;
+  }
+
+  .item__description {
+    text-align: center;
+    font-size: 1rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.4rem;
+    }
+  }
   .description__block {
     display: block;
   }
@@ -310,22 +314,6 @@ const pagoMovilItems = [
     gap: 0.6rem;
     list-style: none;
     padding-left: 0;
-
-    @media (min-width: 1024px) {
-      align-items: flex-start;
-    }
-  }
-
-  .sublist--home {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 2rem;
-    row-gap: 0.5rem;
-    padding-left: 1.6rem;
-
-    @media (min-width: 768px) {
-      grid-template-columns: 1fr;
-    }
   }
 
   .subitem,
@@ -346,15 +334,19 @@ const pagoMovilItems = [
     }
   }
 
-  .icon--gift {
-    @media (min-width: 1024px) {
-      width: 3.625rem;
-      height: 3.625rem;
-    }
-  }
-
   .subitem--copy:focus .icon--copy,
   .subitem--copy:hover .icon--copy {
     color: var(--white);
+  }
+
+  .icon--card {
+    position: absolute;
+    top: calc(100% - 2rem);
+    left: calc(100% - 2rem);
+  }
+
+  .icon--bank {
+    background-color: var(--white);
+    border-radius: 50%;
   }
 </style>

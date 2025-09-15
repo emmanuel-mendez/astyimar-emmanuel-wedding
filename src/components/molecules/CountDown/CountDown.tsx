@@ -1,5 +1,6 @@
 import { useEffect, useState } from "preact/hooks";
 import styles from "./styles.module.css";
+import flower17Image from "@public/images/flower--17.png";
 
 type CountDownProps = {
   target: Date;
@@ -54,7 +55,19 @@ export default function CountDown({ target }: CountDownProps) {
   return (
     <div class={styles.host}>
       <h2 class={styles.title}>{isPassed ? "Ya han pasado:" : "Faltan:"}</h2>
-      <CountDownBlocks {...values} />
+      <div class={styles.content}>
+        <img
+          class={`${styles.flower} ${styles.flowerLeft}`}
+          src={flower17Image.src}
+          alt={"Flower"}
+        />
+        <CountDownBlocks {...values} />
+        <img
+          class={`${styles.flower} ${styles.flowerRight}`}
+          src={flower17Image.src}
+          alt={"Flower"}
+        />
+      </div>
     </div>
   );
 }

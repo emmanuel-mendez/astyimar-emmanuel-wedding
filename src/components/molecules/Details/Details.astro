@@ -22,14 +22,17 @@ const { label }: Props = Astro.props;
 
 <style>
   summary {
+    background-color: var(--primary);
+    color: var(--white);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1rem;
     gap: 0.5rem;
     cursor: pointer;
     border-bottom: 0.0625rem solid var(--secondary);
     font-size: 1.4rem;
+    border-radius: 0.25rem;
 
     @media (min-width: 1024px) {
       font-size: 1.6rem;
@@ -37,6 +40,7 @@ const { label }: Props = Astro.props;
   }
 
   .icon {
+    display: flex;
     transition: transform 0.2s ease-in-out;
   }
 

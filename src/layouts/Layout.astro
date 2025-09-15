@@ -22,7 +22,7 @@ const { guest } = Astro.props;
   </head>
   <body class="font--body">
     <Header guest={guest} />
-    <div>
+    <div class="content">
       <slot />
       <Float />
     </div>
@@ -44,6 +44,11 @@ const { guest } = Astro.props;
       min-height: 100svh;
       grid-template-rows: auto 1fr auto;
       color: var(--black);
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
     }
   </style>
 </html>

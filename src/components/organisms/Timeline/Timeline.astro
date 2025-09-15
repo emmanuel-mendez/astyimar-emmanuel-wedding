@@ -8,7 +8,6 @@ import AppetizersIcon from "@public/icons/appetizers.svg";
 import BouquetIcon from "@public/icons/bouquet.svg";
 import PartyIcon from "@public/icons/party.svg";
 import CakeIcon from "@public/icons/cake.svg";
-import { Image } from "astro:assets";
 
 type TimelineItem = {
   description: string;
@@ -29,7 +28,7 @@ const items: TimelineItem[] = [
 ---
 
 <section id="timeline" class="host">
-  <h2 class="title">Itinerario</h2>
+  <h2 class="title font--heading">Itinerario</h2>
 
   <div class="container">
     <ul class="list">
@@ -42,8 +41,8 @@ const items: TimelineItem[] = [
             <div class="content">
               <item.icon
                 class="icon"
-                width={80}
-                height={80}
+                width={50}
+                height={50}
                 color="var(--primary-dark)"
               />
               <h3 class="description">{item.description}</h3>
@@ -61,7 +60,7 @@ const items: TimelineItem[] = [
     flex-direction: column;
     align-items: center;
     gap: 3.5rem;
-    padding: 3rem 1rem;
+    padding: 3.5rem 1rem;
 
     @media (min-width: 768px) {
       padding: 4rem 1.5rem 2.5rem;
@@ -108,7 +107,7 @@ const items: TimelineItem[] = [
 
   .connector {
     position: absolute;
-    width: 1.8rem;
+    width: 2.65rem;
     min-height: 0.25rem;
     background-color: var(--primary-50);
     z-index: 1;
@@ -116,12 +115,8 @@ const items: TimelineItem[] = [
     top: 50%;
     transform: translateY(-50%);
 
-    @media (min-width: 375px) {
-      width: 3.1rem;
-    }
-
     @media (min-width: 768px) {
-      width: 5.3rem;
+      width: 4.6rem;
     }
 
     @media (min-width: 1024px) {
@@ -156,14 +151,21 @@ const items: TimelineItem[] = [
   }
 
   .list {
+    margin: 0 auto;
+    max-width: 280px;
     display: flex;
     flex-direction: column;
     padding: 0;
 
+    @media (min-width: 768px) {
+      max-width: 375px;
+    }
+
     @media (min-width: 1024px) {
+      max-width: 100%;
       position: relative;
       flex-direction: row;
-      min-height: calc(35rem + 0.25rem);
+      min-height: calc(34rem + 0.25rem);
       justify-content: center;
     }
   }
@@ -191,12 +193,16 @@ const items: TimelineItem[] = [
 
   .item {
     display: flex;
+    min-width: 6rem;
     max-width: 40%;
     flex-direction: column;
     align-items: center;
     position: relative;
     z-index: 1;
-    padding: 0 1rem;
+
+    @media (min-width: 768px) {
+      min-width: 7.25rem;
+    }
 
     @media (min-width: 1024px) {
       min-height: 17rem;
@@ -206,14 +212,21 @@ const items: TimelineItem[] = [
 
   .item--left {
     align-self: flex-start;
+    padding-right: 1rem;
 
     @media (min-width: 1024px) {
       flex-direction: column-reverse;
       justify-content: flex-start;
+      padding-right: 0;
     }
   }
   .item--right {
     align-self: flex-end;
+    padding-left: 1rem;
+
+    @media (min-width: 1024px) {
+      padding-left: 0;
+    }
   }
 
   .content {
@@ -224,19 +237,20 @@ const items: TimelineItem[] = [
     background-color: var(--white);
   }
 
-  .divider {
-    margin-block: 2rem;
-  }
-
   .icon {
     @media (min-width: 768px) {
-      width: 6.25rem;
-      min-height: 6.25rem;
+      width: 4.375rem;
+      height: 4.375rem;
     }
+
     @media (min-width: 1024px) {
-      width: 7.5rem;
-      min-height: 7.5rem;
+      width: 80px;
+      height: 80px;
     }
+  }
+
+  .divider {
+    margin-block: 2rem;
   }
 
   .description {

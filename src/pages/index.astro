@@ -5,6 +5,11 @@ import DressCode from "@components/organisms/DressCode/DressCode.astro";
 import Location from "@components/organisms/Location/Location.astro";
 import Timeline from "@components/organisms/Timeline/Timeline.astro";
 import Layout from "@layouts/Layout.astro";
+import Gifts from "@components/organisms/Gifts/Gifts.astro";
+import divider1Image from "@public/images/divider--1.png";
+import divider2Image from "@public/images/divider--2.png";
+import { Image } from "astro:assets";
+import Photo from "@components/atoms/Photo.astro";
 ---
 
 <Layout>
@@ -12,5 +17,21 @@ import Layout from "@layouts/Layout.astro";
   <Date />
   <Location />
   <DressCode />
+  <Photo />
+  <Image class="divider divider--1" src={divider1Image} alt="Divider" />
   <Timeline />
+  <Image class="divider divider--2" src={divider2Image} alt="Divider" />
+  <Gifts />
 </Layout>
+
+<style>
+  .divider {
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .divider--1,
+  .divider--2 {
+    width: min(27.1875rem, 70%);
+  }
+</style>
