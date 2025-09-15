@@ -1,16 +1,37 @@
 ---
 import DressIcon from "@public/icons/dress.svg";
 import SuitIcon from "@public/icons/suit.svg";
+import flower3Image from "@public/images/flower--3.png";
+import flower16Image from "@public/images/flower--16.png";
+import flower14Image from "@public/images/flower--14.png";
+import { Image } from "astro:assets";
 ---
 
 <section id="dress-code" class="host">
   <div class="head">
     <h2 class="title">Código de Vestimenta</h2>
-    <p class="description">Formal</p>
+    <div class="description__container">
+      <Image
+        class={"description__flower description__flower--1"}
+        src={flower3Image}
+        alt={"Flower"}
+      />
+      <p class="description">Formal</p>
+      <Image
+        class={"description__flower description__flower--2"}
+        src={flower3Image}
+        alt={"Flower"}
+      />
+    </div>
   </div>
 
   <div class="body">
     <div class="item">
+      <Image
+        class={"item__flower item__flower--dress"}
+        src={flower16Image}
+        alt={"Flower"}
+      />
       <DressIcon
         class="item__icon"
         width={60}
@@ -26,6 +47,11 @@ import SuitIcon from "@public/icons/suit.svg";
     </div>
 
     <div class="item">
+      <Image
+        class={"item__flower item__flower--suit"}
+        src={flower14Image}
+        alt={"Flower"}
+      />
       <SuitIcon
         class="item__icon"
         width={60}
@@ -81,6 +107,16 @@ import SuitIcon from "@public/icons/suit.svg";
     }
   }
 
+  .description__container {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+
+    @media (min-width: 768px) {
+      gap: 0.75rem;
+    }
+  }
+
   .description {
     font-size: 2rem;
     text-align: center;
@@ -96,6 +132,19 @@ import SuitIcon from "@public/icons/suit.svg";
     }
   }
 
+  .description__flower {
+    height: 1.2rem;
+    width: auto;
+
+    @media (min-width: 768px) {
+      height: 1.5rem;
+    }
+  }
+
+  .description__flower--2 {
+    transform: rotate(180deg);
+  }
+
   .body {
     display: grid;
     width: min(100%, 48rem);
@@ -108,6 +157,7 @@ import SuitIcon from "@public/icons/suit.svg";
   }
 
   .item {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -119,6 +169,35 @@ import SuitIcon from "@public/icons/suit.svg";
     @media (min-width: 768px) {
       padding: 1rem;
       gap: 1.5rem;
+    }
+  }
+
+  .item__flower {
+    position: absolute;
+    height: auto;
+  }
+
+  .item__flower--dress {
+    width: 2rem;
+    bottom: calc(100% - 1rem);
+    right: calc(100% - 1rem);
+
+    @media (min-width: 768px) {
+      width: 3rem;
+      bottom: calc(100% - 1.5rem);
+      right: calc(100% - 1.5rem);
+    }
+  }
+
+  .item__flower--suit {
+    width: 1.3rem;
+    top: calc(100% - 2rem);
+    left: calc(100% - 0.5rem);
+
+    @media (min-width: 768px) {
+      width: 2rem;
+      top: calc(100% - 3.5rem);
+      left: calc(100% - 1.5rem);
     }
   }
 
@@ -152,7 +231,7 @@ import SuitIcon from "@public/icons/suit.svg";
   .color {
     font-weight: bold;
     text-transform: capitalize;
-    padding: 0.0625rem 0.6rem;
+    padding: 0.0625rem 0.65rem;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 0.6rem;
     font-size: 1.1em;
