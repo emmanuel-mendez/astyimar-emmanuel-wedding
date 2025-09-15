@@ -4,6 +4,7 @@ import CopyIcon from "@public/icons/copy.svg";
 import MoneyIcon from "@public/icons/money.svg";
 import BankIcon from "@public/icons/bank.svg";
 import flower1Image from "@public/images/flower--1.png";
+import flower18Image from "@public/images/flower--18.png";
 import { Image } from "astro:assets";
 
 const pagoMovilItems = [
@@ -25,18 +26,27 @@ const pagoMovilItems = [
 ];
 ---
 
-<section class="host">
+<section id="gifts" class="host">
   <div class="column">
     <h2 class="title font--heading">
+      <Image
+        class={"title__flower title__flower--top"}
+        src={flower18Image}
+        alt={"Flower"}
+      />
       <span>Regalos</span>
+      <Image
+        class={"title__flower title__flower--bottom"}
+        src={flower18Image}
+        alt={"Flower"}
+      />
     </h2>
 
     <div class="intro">
       <p class="description">
         <span class="description__block">
           Tu presencia es el mejor regalo de todos. Si deseas impulsar nuestros
-          primeros pasos como casados puedes regalarnos algo especial, lo
-          recibiremos con mucho amor y gratitud.
+          primeros pasos como esposos lo recibiremos con mucho amor y gratitud.
         </span>
         <span class="description__block"
           >¡Gracias por tu cariño y apoyo incondicional!</span
@@ -55,7 +65,7 @@ const pagoMovilItems = [
               <h4 class="item__title">Dinero en Efectivo</h4>
             </div>
             <p class="item__description">
-              Recuerda colocarlo en un sobre, no desperdicies la oportinidad de
+              Recuerda colocarlo en un sobre, no desperdicies la oportunidad de
               incluir un mensaje personalizado.
             </p>
           </li>
@@ -99,7 +109,7 @@ const pagoMovilItems = [
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    padding: 3rem 1.5rem;
+    padding: 4rem 1.5rem;
 
     @media (min-width: 1024px) {
       max-width: 80rem;
@@ -118,16 +128,16 @@ const pagoMovilItems = [
     z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 1.6rem;
+    gap: 1.8rem;
 
     @media (min-width: 1024px) {
       justify-content: center;
-      gap: 2rem;
+      gap: 2.2rem;
     }
   }
 
   .cards {
-    width: min(768px, 85%);
+    width: min(768px, 75%);
     margin: 0 auto;
     display: grid;
     place-items: center;
@@ -166,10 +176,13 @@ const pagoMovilItems = [
   }
 
   .title {
+    margin: 0 auto;
+    width: max-content;
     position: relative;
     display: flex;
     font-size: 2.4rem;
     justify-content: center;
+    padding: 0.5rem;
 
     @media (min-width: 768px) {
       font-size: 2.8rem;
@@ -178,6 +191,24 @@ const pagoMovilItems = [
     @media (min-width: 1024px) {
       font-size: 3.8rem;
     }
+  }
+
+  .title__flower {
+    position: absolute;
+    width: 2.6rem;
+    height: auto;
+  }
+
+  .title__flower--top {
+    bottom: calc(100% - 2.25rem);
+    right: calc(100% - 0.5rem);
+    transform: rotate(45deg);
+  }
+
+  .title__flower--bottom {
+    top: calc(100% - 2.5rem);
+    left: calc(100% - 0.5rem);
+    transform: rotate(-15deg);
   }
 
   .intro {
@@ -236,6 +267,11 @@ const pagoMovilItems = [
     @media (min-width: 768px) {
       font-size: 1.6rem;
     }
+  }
+
+  .description {
+    margin: 0 auto;
+    max-width: 50ch;
   }
 
   .item__title {
