@@ -8,5 +8,8 @@ import cloudflare from '@astrojs/cloudflare';
 // https://astro.build/config
 export default defineConfig({
   integrations: [preact()],
-  adapter: cloudflare()
+  adapter: cloudflare({
+    imageService: "compile"
+  }),
+
 });
