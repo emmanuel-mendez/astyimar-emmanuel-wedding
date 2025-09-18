@@ -14,6 +14,7 @@ import divider2Image from "@public/images/divider--2.png";
 import { Image } from "astro:assets";
 import { tables } from "../data.json";
 import Photo from "@components/atoms/Photo.astro";
+import Reminder from "@components/organisms/Reminder/Reminder.astro";
 
 export const allGuests: Guest[] = tables.flat();
 
@@ -41,6 +42,7 @@ export function getStaticPaths() {
   <Timeline />
   <Image class="divider divider--2" src={divider2Image} alt="Divider" />
   <Gifts />
+  <Reminder />
   {guest && <Table guest={guest} />}
 </Layout>
 
