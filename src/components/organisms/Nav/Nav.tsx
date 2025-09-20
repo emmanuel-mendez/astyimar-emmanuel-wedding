@@ -36,7 +36,11 @@ export function Nav({ guest }: Props) {
     { href: "#dress-code", label: "Código de vestimenta" },
     { href: "#timeline", label: "Itinerario" },
     { href: "#gifts", label: "Regalos" },
-    { href: "#table", label: "Encuentra tu mesa" },
+    {
+      href: "#table",
+      label: "Encuentra tu mesa",
+      invited: guest ? true : false,
+    },
   ];
 
   const cats: Cat[] = [
