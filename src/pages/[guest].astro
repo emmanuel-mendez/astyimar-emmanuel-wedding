@@ -42,7 +42,7 @@ export function getStaticPaths() {
   <Timeline />
   <Image class="divider divider--2" src={divider2Image} alt="Divider" />
   <Gifts />
-  <Reminder />
+  {guest && <Reminder guest={guest} />}
   {guest && <Table guest={guest} />}
 </Layout>
 
