@@ -23,11 +23,7 @@ export function Nav({ guest }: Props) {
 
   useEffect(() => {
     const body = document.body;
-    if (visible) {
-      body.classList.add("overflow-y--hidden");
-    } else {
-      body.classList.remove("overflow-y--hidden");
-    }
+    body.classList.toggle("overflow-y--hidden", visible);
     return () => {
       body.classList.remove("overflow-y--hidden");
     };
