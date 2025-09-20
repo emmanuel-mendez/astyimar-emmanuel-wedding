@@ -100,7 +100,7 @@ export function Nav({ guest }: Props) {
                   </li>
                 ))}
             </ul>
-            <a href="#" className={styles.button} onClick={linkClick}>
+            <a href="#reminder" className={styles.button} onClick={linkClick}>
               Confirma tu asistencia
             </a>
           </div>
