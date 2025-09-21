@@ -57,6 +57,7 @@
   width: 2rem;
   height: 2rem;
   cursor: pointer;
+  z-index: 2;
 
   @media (min-width: 768px) {
     width: 2.5rem;
