@@ -118,7 +118,7 @@
 
 .topShadow.open {
   transform: translateY(-100vh);
-  transition: transform 1s ease;
+  transition: transform 1.5s ease;
 }
 
 .body {
@@ -152,7 +152,7 @@
 
 .body.open {
   transform: translateY(100vh);
-  transition: transform 1s ease 0.5s;
+  transition: transform 1.5s ease 0.5s;
 }
 
 .content {
