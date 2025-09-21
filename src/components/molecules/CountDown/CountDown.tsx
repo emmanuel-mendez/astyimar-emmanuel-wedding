@@ -57,13 +57,13 @@ export default function CountDown({ target }: CountDownProps) {
       <div class={styles.content}>
         <img
           class={`${styles.flower} ${styles.flowerLeft}`}
-          src="/images/flower--17.png"
+          src="/images/flower--17.webp"
           alt={"Flower"}
         />
         <CountDownBlocks {...values} />
         <img
           class={`${styles.flower} ${styles.flowerRight}`}
-          src="/images/flower--17.png"
+          src="/images/flower--17.webp"
           alt={"Flower"}
         />
       </div>

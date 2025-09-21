@@ -1,6 +1,7 @@
 import type { Guest } from "@models/types/guest";
-import { useEffect, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import styles from "./styles.module.css";
+import Dialog from "@components/molecules/Dialog/Dialog";
 
 interface Props {
   guest?: Guest;
@@ -13,22 +14,13 @@ type Link = {
 };
 
 type Cat = {
-  src: string;
+  iconSrc: string;
+  imageSrc: string;
   alt: string;
   name: string;
 };
 
 export function Nav({ guest }: Props) {
-  const [visible, setVisible] = useState<boolean>(false);
-
-  useEffect(() => {
-    const body = document.body;
-    body.classList.toggle("overflow-y--hidden", visible);
-    return () => {
-      body.classList.remove("overflow-y--hidden");
-    };
-  }, [visible]);
-
   const navLinks: Link[] = [
     { href: "#guest", label: "Invitado", invited: guest ? true : false },
     { href: "#date", label: "Fecha" },
@@ -44,11 +36,89 @@ export function Nav({ guest }: Props) {
   ];
 
   const cats: Cat[] = [
-    { src: "/icons/lolo.svg", alt: "Lolo", name: "Lolo" },
-    { src: "/icons/michi.svg", alt: "Michi", name: "Michi" },
-    { src: "/icons/escuichi.svg", alt: "Escuichi", name: "Escuichi" },
-    { src: "/icons/bestia.svg", alt: "Bestia", name: "Nene Bestia" },
+    {
+      iconSrc: "/icons/lolo.svg",
+      imageSrc: "/images/lolo.jpeg",
+      alt: "Lolo",
+      name: "Lolo",
+    },
+    {
+      iconSrc: "/icons/michi.svg",
+      imageSrc: "/images/michi.jpeg",
+      alt: "Michi",
+      name: "Michi",
+    },
+    {
+      iconSrc: "/icons/escuichi.svg",
+      imageSrc: "/images/escuichi.jpeg",
+      alt: "Escuichi",
+      name: "Escuichi",
+    },
+    {
+      iconSrc: "/icons/bestia.svg",
+      imageSrc: "/images/bestia.jpeg",
+      alt: "Bestia",
+      name: "Nene Bestia",
+    },
   ];
+
+  const tooltipMessages = [
+    "¡Haz click en mi!",
+    "¡Miau!",
+    "¡Clickea en mi!",
+    "¿Miau?",
+  ];
+
+  const [visible, setVisible] = useState<boolean>(false);
+  const [dialog, setDialog] = useState<boolean>(false);
+  const [activeCat, setActiveCat] = useState<Cat | undefined>(undefined);
+  const [tooltipCatIndex, setTooltipCatIdx] = useState<number | null>(null);
+  const [tooltipMessageIndex, setTooltipMsgIdx] = useState<number>(0);
+  const tooltipTimer = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (dialog) {
+      if (tooltipTimer.current) clearInterval(tooltipTimer.current);
+      setTooltipCatIdx(null);
+      return;
+    }
+
+    function showRandomTooltip(): void {
+      let newCatIndex = Math.floor(Math.random() * cats.length);
+      let newTooltipMessageIndex = Math.floor(
+        Math.random() * tooltipMessages.length
+      );
+
+      if (
+        tooltipMessages.length > 1 &&
+        newTooltipMessageIndex === tooltipMessageIndex
+      ) {
+        newTooltipMessageIndex =
+          (newTooltipMessageIndex + 1) % tooltipMessages.length;
+      }
+
+      if (cats.length > 1 && newCatIndex === tooltipCatIndex) {
+        newCatIndex = (newCatIndex + 1) % cats.length;
+      }
+
+      setTooltipCatIdx(newCatIndex);
+      setTooltipMsgIdx(newTooltipMessageIndex);
+    }
+
+    tooltipTimer.current = window.setInterval(showRandomTooltip, 2000);
+
+    return () => {
+      if (tooltipTimer.current) clearInterval(tooltipTimer.current);
+    };
+  }, [tooltipMessageIndex, dialog]);
+
+  useEffect(() => {
+    const body = document.body;
+    body.classList.toggle("overflow-y--hidden", visible);
+    return () => {
+      body.classList.remove("overflow-y--hidden");
+    };
+  }, [visible]);
 
   function toggle(): void {
     setVisible(!visible);
@@ -56,6 +126,15 @@ export function Nav({ guest }: Props) {
 
   function linkClick(): void {
     setVisible(false);
+  }
+
+  function onDialogToggle(): void {
+    setDialog((previousState) => !previousState);
+  }
+
+  function selectCat(cat: Cat): void {
+    setActiveCat(cat);
+    onDialogToggle();
   }
 
   return (
@@ -109,13 +188,41 @@ export function Nav({ guest }: Props) {
             </a>
           </div>
           <div className={styles.cats}>
-            {cats.map((cat) => (
-              <div className={styles.cat} key={cat.alt}>
-                <img src={cat.src} alt={cat.alt} width={35} height={35} />
+            {cats.map((cat, index) => (
+              <div
+                className={styles.cat}
+                key={cat.alt}
+                onClick={() => selectCat(cat)}
+              >
+                {tooltipCatIndex === index && (
+                  <div className={styles.tooltip}>
+                    {tooltipMessages[tooltipMessageIndex]}
+                  </div>
+                )}
+                <img src={cat.iconSrc} alt={cat.alt} width={35} height={35} />
                 <h2 className={styles.cat__name}>{cat.name}</h2>
               </div>
             ))}
           </div>
+          {dialog && activeCat && (
+            <Dialog onToggle={onDialogToggle}>
+              <div className={styles.catDialog}>
+                <h2 className={`${styles.catDialog__name} font--heading`}>
+                  {activeCat.name}
+                </h2>
+                <img
+                  className={styles.catDialog__image}
+                  src={activeCat.imageSrc}
+                />
+
+                <img
+                  className={styles.catDialog__flower}
+                  src="/images/flower--18.webp"
+                  alt="Flower"
+                />
+              </div>
+            </Dialog>
+          )}
         </div>
       </nav>
     </div>
