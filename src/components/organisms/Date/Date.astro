@@ -1,7 +1,8 @@
 ---
 import CountDown from "@components/molecules/CountDown/CountDown";
 
-const date = new globalThis.Date("2025-12-13T14:00:00");
+const date = new globalThis.Date("2025-12-13T13:00:00");
+const endDate = new globalThis.Date("2025-12-13T21:00:00");
 
 let formattedDate = date.toLocaleDateString("es-ES", {
   weekday: "long",
@@ -10,9 +11,24 @@ let formattedDate = date.toLocaleDateString("es-ES", {
   day: "numeric",
 });
 
+let formattedEndDate = endDate.toLocaleDateString("es-ES", {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
 formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+formattedEndDate =
+  formattedEndDate.charAt(0).toUpperCase() + formattedEndDate.slice(1);
 
 const formattedHour = date.toLocaleTimeString("es-ES", {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: true,
+});
+
+const formattedEndHour = endDate.toLocaleTimeString("es-ES", {
   hour: "2-digit",
   minute: "2-digit",
   hour12: true,
@@ -29,7 +45,7 @@ const formattedHour = date.toLocaleTimeString("es-ES", {
     </p>
     <p class="hour">
       <span class="info__heading">Hora:</span>
-      <span class="info__content">{formattedHour}</span>
+      <span class="info__content">{formattedHour} - {formattedEndHour}</span>
     </p>
   </div>
 </section>

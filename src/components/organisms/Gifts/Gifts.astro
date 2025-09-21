@@ -61,16 +61,15 @@ const pagoMovilItems = [
         <Image class={"card__flower"} src={flower1Image} alt={"Flower"} />
         <ul class="list">
           <li class="item">
-            <div class="item__header">
-              <h4 class="item__title">Dinero en Efectivo</h4>
-            </div>
             <p class="item__description">
-              Recuerda colocarlo en un sobre, no desperdicies la oportunidad de
-              incluir un mensaje personalizado.
+              No desperdicies la oportunidad de incluir un mensaje
+              personalizado.
             </p>
           </li>
         </ul>
-        <MoneyIcon class="icon--card icon--money" width={48} height={48} />
+        <div class="icon-container icon--card">
+          <MoneyIcon class="icon--money" width={42} height={42} />
+        </div>
       </div>
 
       <div class="card">
@@ -78,12 +77,6 @@ const pagoMovilItems = [
 
         <ul class="list">
           <li class="item">
-            <div class="item__header">
-              <h4 class="item__title">Transferencia Bancaria</h4>
-              <p class="item__description">
-                Realiza tu aporte el día del evento.
-              </p>
-            </div>
             <ul class="sublist sublist--copy">
               {
                 pagoMovilItems.map((item) => (
@@ -137,21 +130,27 @@ const pagoMovilItems = [
   }
 
   .cards {
-    width: min(768px, 75%);
+    width: min(768px, 80%);
     margin: 0 auto;
     display: grid;
+    grid-template-rows: repeat(2, 1fr);
     place-items: center;
     gap: 1.5rem;
 
     @media (min-width: 1024px) {
       grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr;
       gap: 3rem;
     }
   }
 
   .card {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
@@ -337,6 +336,18 @@ const pagoMovilItems = [
   .subitem--copy:focus .icon--copy,
   .subitem--copy:hover .icon--copy {
     color: var(--white);
+  }
+
+  .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    border: 0.25rem solid var(--white);
+    background-color: #6d578f;
+    width: 3rem;
+    height: 3rem;
   }
 
   .icon--card {

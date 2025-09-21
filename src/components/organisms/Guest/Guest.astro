@@ -31,11 +31,11 @@ const { guest } = Astro.props;
           <div class="coupon">
             {guest.coupon ? (
               <p>
-                <span class="line">¡Qué emoción!</span>
+                <Image class="coupon__flower" src={flower8Image} alt="Flower" />
                 <span class="line">
-                  Puedes asistir con
+                  Para todo fluya con armonía, puedes asistir con
                   <span class="highlight">({guest.coupon})</span>
-                  {guest.coupon > 1 ? "acompañantes" : "acompañante"} extra.
+                  {guest.coupon > 1 ? "acompañantes" : "acompañante"}.
                 </span>
 
                 <TicketIcon class="coupon__image" width={300} height={200} />
@@ -57,27 +57,23 @@ const { guest } = Astro.props;
 
     <div class="info">
       <p class="message">
-        El amor es infinito pero el espacio es limitado, por eso hemos reservado
-        con cariño tu lugar {
-          guest?.coupon ? (
-            guest.coupon > 1 ? (
-              <span class="message__extra-guests">
-                ¡y el de tus acompañantes!
-              </span>
-            ) : (
-              "¡y el de tu acompañante!"
-            )
-          ) : (
-            "¡Contamos con tu presencia!"
-          )
+        {
+          guest?.coupon
+            ? "Esta es una reunión privada, por lo que tu identificación será requerida al ingresar. Por favor, ten en cuenta que este es un evento íntimo. Esta invitación es tan exclusiva como tú."
+            : "El amor es infinito pero el espacio es limitado, por eso hemos reservado con cariño tu lugar ¡Contamos con tu presencia!"
         }
       </p>
 
-      <p class="disclaimer">
+      {
+        guest?.coupon 
+        ? <></> 
+        : <p class="disclaimer">
         *Esta es una reunión privada, por lo que tu identificación será
         requerida al ingresar. Por favor, ten en cuenta que este es un evento
         íntimo. Esta invitación es tan exclusiva como tú.
       </p>
+      }
+
     </div>
   </div>
 </section>
@@ -237,6 +233,7 @@ const { guest } = Astro.props;
 
   .message {
     font-size: 1.2rem;
+    text-align: justify;
 
     @media (min-width: 768px) {
       font-size: 1.6rem;
