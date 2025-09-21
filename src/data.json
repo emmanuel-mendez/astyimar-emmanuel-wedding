@@ -51,7 +51,8 @@
       {
         "id": "daxymar",
         "name": "Daxymar",
-        "gender": "female"
+        "gender": "female",
+        "coupon": 1
       },
       {
         "id": "danahaymar",
