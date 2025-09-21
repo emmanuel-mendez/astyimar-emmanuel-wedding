@@ -2,6 +2,7 @@ import type { Guest } from "@models/types/guest";
 import { useEffect, useRef, useState } from "preact/hooks";
 import styles from "./styles.module.css";
 import Dialog from "@components/molecules/Dialog/Dialog";
+import ConfirmModal from "../ConfirmModal/ConfirmModal";
 
 interface Props {
   guest?: Guest;
@@ -70,16 +71,18 @@ export function Nav({ guest }: Props) {
   ];
 
   const [visible, setVisible] = useState<boolean>(false);
-  const [dialog, setDialog] = useState<boolean>(false);
+  const [catDialog, setCatDialog] = useState<boolean>(false);
   const [activeCat, setActiveCat] = useState<Cat | undefined>(undefined);
-  const [tooltipCatIndex, setTooltipCatIdx] = useState<number | null>(null);
-  const [tooltipMessageIndex, setTooltipMsgIdx] = useState<number>(0);
+  const [tooltipCatIndex, setTooltipCatIndex] = useState<number | null>(null);
+  const [tooltipMessageIndex, setTooltipMessageIndex] = useState<number>(0);
   const tooltipTimer = useRef<number | null>(null);
 
+  const [confirmDialog, setConfirmDialog] = useState<boolean>(false);
+
   useEffect(() => {
-    if (dialog) {
+    if (catDialog) {
       if (tooltipTimer.current) clearInterval(tooltipTimer.current);
-      setTooltipCatIdx(null);
+      setTooltipCatIndex(null);
       return;
     }
 
@@ -101,8 +104,8 @@ export function Nav({ guest }: Props) {
         newCatIndex = (newCatIndex + 1) % cats.length;
       }
 
-      setTooltipCatIdx(newCatIndex);
-      setTooltipMsgIdx(newTooltipMessageIndex);
+      setTooltipCatIndex(newCatIndex);
+      setTooltipMessageIndex(newTooltipMessageIndex);
     }
 
     tooltipTimer.current = window.setInterval(showRandomTooltip, 2000);
@@ -110,7 +113,7 @@ export function Nav({ guest }: Props) {
     return () => {
       if (tooltipTimer.current) clearInterval(tooltipTimer.current);
     };
-  }, [tooltipMessageIndex, dialog]);
+  }, [tooltipMessageIndex, catDialog]);
 
   useEffect(() => {
     const body = document.body;
@@ -130,13 +133,17 @@ export function Nav({ guest }: Props) {
     setVisible(false);
   }
 
-  function onDialogToggle(): void {
-    setDialog((previousState) => !previousState);
+  function onCatDialogToggle(): void {
+    setCatDialog((previousState) => !previousState);
   }
 
   function selectCat(cat: Cat): void {
     setActiveCat(cat);
-    onDialogToggle();
+    onCatDialogToggle();
+  }
+
+  function onConfirmDialogToggle(): void {
+    setConfirmDialog((previousState) => !previousState);
   }
 
   return (
@@ -186,9 +193,23 @@ export function Nav({ guest }: Props) {
                 ))}
             </ul>
             {guest && (
-              <a href="#reminder" className={styles.button} onClick={linkClick}>
-                Confirma tu asistencia
-              </a>
+              <>
+                <button
+                  className={`${styles.button} font--body`}
+                  onClick={() => {
+                    linkClick();
+                    setConfirmDialog(true);
+                  }}
+                >
+                  Confirma tu asistencia
+                </button>
+
+                {confirmDialog && (
+                  <Dialog onToggle={onConfirmDialogToggle}>
+                    <ConfirmModal guest={guest} setState={setConfirmDialog} />
+                  </Dialog>
+                )}
+              </>
             )}
           </div>
           <div className={styles.cats}>
@@ -208,8 +229,8 @@ export function Nav({ guest }: Props) {
               </div>
             ))}
           </div>
-          {dialog && activeCat && (
-            <Dialog onToggle={onDialogToggle}>
+          {catDialog && activeCat && (
+            <Dialog onToggle={onCatDialogToggle}>
               <div className={styles.catDialog}>
                 <h2 className={`${styles.catDialog__name} font--heading`}>
                   {activeCat.name}

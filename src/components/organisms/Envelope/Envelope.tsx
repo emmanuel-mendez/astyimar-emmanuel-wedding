@@ -12,15 +12,6 @@ export default function Envelope({ guest }: EnvelopeProps) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    if (!open) {
-      const timer = setTimeout(() => {
-        setOpen(true);
-      }, 10000);
-      return () => clearTimeout(timer);
-    }
-  }, [open]);
-
-  useEffect(() => {
     const body = document.body;
     if (open) {
       body.classList.remove("overflow-y--hidden");

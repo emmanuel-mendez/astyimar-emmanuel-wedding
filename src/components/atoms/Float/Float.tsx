@@ -2,13 +2,13 @@ import { useState } from "preact/hooks";
 import styles from "./styles.module.css";
 import Dialog from "@components/molecules/Dialog/Dialog";
 import type { Guest } from "@models/types/guest";
-import ConfirmModal from "../ConfirmModal/ConfirmModal";
+import ConfirmModal from "@components/organisms/ConfirmModal/ConfirmModal";
 
-type ConfirmDialogProps = {
+type FloatProps = {
   guest: Guest;
 };
 
-export default function confirmDialog({ guest }: ConfirmDialogProps) {
+export default function Float({ guest }: FloatProps) {
   const [state, setState] = useState<boolean>(false);
 
   function onToggle(): void {
@@ -16,12 +16,18 @@ export default function confirmDialog({ guest }: ConfirmDialogProps) {
   }
 
   return (
-    <section className={styles.host}>
+    <>
       <button
+        className={`${styles.host} font--body`}
         onClick={() => setState(true)}
-        className={`${styles.button} ${styles.buttonPrimary} font--body`}
       >
-        Confirmar asistencia
+        <div className={styles.icon}>
+          <img src="/icons/schedule.svg" width={24} height={24} />
+        </div>
+        <p className={styles.text}>
+          <span className={styles.line}>Confirma</span>
+          <span className={styles.line}>tu asistencia</span>
+        </p>
       </button>
 
       {state && (
@@ -29,6 +35,8 @@ export default function confirmDialog({ guest }: ConfirmDialogProps) {
           <ConfirmModal guest={guest} setState={setState} />
         </Dialog>
       )}
-    </section>
+    </>
   );
 }
+
+<style></style>;
