@@ -51,7 +51,7 @@ const { guest } = Astro.props;
     <Header guest={guest} />
     <div class="content">
       <slot />
-      <Float />
+      {guest && <Float />}
     </div>
     <Footer />
   </body>
