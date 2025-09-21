@@ -12,6 +12,7 @@
   position: relative;
   width: 3.25rem;
   height: 3.25rem;
+  cursor: pointer;
 }
 
 .icon--menu {

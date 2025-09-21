@@ -114,7 +114,9 @@ export function Nav({ guest }: Props) {
 
   useEffect(() => {
     const body = document.body;
-    body.classList.toggle("overflow-y--hidden", visible);
+    if (visible) {
+      body.classList.toggle("overflow-y--hidden", visible);
+    }
     return () => {
       body.classList.remove("overflow-y--hidden");
     };
@@ -183,9 +185,11 @@ export function Nav({ guest }: Props) {
                   </li>
                 ))}
             </ul>
-            <a href="#reminder" className={styles.button} onClick={linkClick}>
-              Confirma tu asistencia
-            </a>
+            {guest && (
+              <a href="#reminder" className={styles.button} onClick={linkClick}>
+                Confirma tu asistencia
+              </a>
+            )}
           </div>
           <div className={styles.cats}>
             {cats.map((cat, index) => (

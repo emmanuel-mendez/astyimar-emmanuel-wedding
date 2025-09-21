@@ -1,0 +1,176 @@
+.host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.seal {
+  position: fixed;
+  top: calc(50% - 3rem);
+  left: calc(50% - 3rem);
+  width: 6rem;
+  height: 6rem;
+  background-color: var(--primary);
+  border-radius: 50%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+  z-index: 3;
+
+  @media (min-width: 768px) {
+    width: 8rem;
+    height: 8rem;
+    top: calc(50% - 4rem);
+    left: calc(50% - 4rem);
+  }
+
+  @media (min-width: 1024px) {
+    width: 10rem;
+    height: 10rem;
+    top: calc(50% - 5rem);
+    left: calc(50% - 5rem);
+  }
+}
+
+.seal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 1.25rem rgba(0, 0, 0, 0.2);
+}
+
+.seal.open {
+  transform: translateY(-100vh);
+  transition: transform 1s ease;
+}
+
+.sealText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.75rem;
+  color: var(--secondary);
+  aspect-ratio: 1 / 1;
+
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 3rem;
+  }
+}
+
+.top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  clip-path: polygon(0 0, 0 5rem, 50% 100%, 100% 5rem, 100% 0);
+  background-color: var(--primary);
+  z-index: 2;
+}
+
+.top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/paper-background.webp");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  z-index: -1;
+}
+
+.top.open {
+  transform: translateY(-100vh);
+  transition: transform 1s ease;
+}
+
+.topShadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(50% + 1rem);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
+  clip-path: polygon(0 1rem, 0 5rem, 50% 100%, 100% 5rem, 100% 0);
+  pointer-events: none;
+  z-index: 1;
+  box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.2);
+}
+
+.topShadow.open {
+  transform: translateY(-100vh);
+  transition: transform 1s ease;
+}
+
+.body {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 4.5rem, 0 100%, 100% 100%, 100% 4.5rem, 50% 50%);
+  padding: 1.5rem;
+  background-color: #dfdfdf;
+}
+
+.body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/paper-background.webp");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  z-index: -1;
+}
+
+.body.open {
+  transform: translateY(100vh);
+  transition: transform 1s ease 0.5s;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.from,
+.to {
+  font-size: 1.2rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.75rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 2rem;
+  }
+}

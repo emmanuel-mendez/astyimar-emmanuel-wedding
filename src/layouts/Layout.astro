@@ -4,6 +4,7 @@ import Footer from "@components/organisms/Footer/Footer.astro";
 import Header from "@components/organisms/Header/Header.astro";
 import type { Guest } from "@models/types/guest";
 import "../../styles/main.css";
+import Envelope from "@components/organisms/Envelope/Envelope";
 
 interface Props {
   guest?: Guest;
@@ -47,13 +48,14 @@ const { guest } = Astro.props;
     <meta name="twitter:image" content="/images/open-graph-twitter.png" />
     <meta name="twitter:image:alt" content="Astyimar y Emmanuel - Boda" />
   </head>
-  <body class="font--body">
+  <body class={`font--body ${guest ? "overflow-y--hidden" : ""}`}>
     <Header guest={guest} />
     <div class="content">
       <slot />
-      <Float />
+      {guest && <Float />}
     </div>
     <Footer />
+    {guest && <Envelope client:load guest={guest} />}
   </body>
 
   <style>
