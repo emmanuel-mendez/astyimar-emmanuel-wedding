@@ -17,6 +17,8 @@ export type Table = Guest[];
 
 const { guest } = Astro.props;
 
+const allTables: Guest[] = tables;
+
 const table: Table =
   tables.find((guests) => isGuestInTable(guests, guest.id)) || [];
 
@@ -38,35 +40,48 @@ function isGuestInTable(guests: Guest[], guestId: string): boolean {
   <div class="head">
     <h2 class="title font--heading">Encuentra tu mesa</h2>
 
-    <div class="info">
-      <p class="description">
-        Tu mesa es la <span class="description--bold">#{tableIndex + 1}</span>
-      </p>
-      <p class="description">Se encuenta resaltada en el siguiente mapa</p>
-    </div>
+    {
+      tableIndex + 1 !== allTables.length && (
+        <div class="info">
+          <p class="description">
+            Tu mesa es la{" "}
+            <span class="description--bold">#{tableIndex + 1}</span>
+          </p>
+          <p class="description">Se encuenta resaltada en el siguiente mapa</p>
+        </div>
+      )
+    }
   </div>
 
   <div class="body">
-    <div class="sketch">
-      {
-        tables.map((table, sketchTableIndex) => (
-          <div
-            class={`sketch__item table table--${tableIndex === sketchTableIndex ? "active" : "inactive"} table--${sketchTableIndex + 1} `}
-            style={`grid-area: table--${sketchTableIndex + 1}`}
-          >
-            <span>{sketchTableIndex + 1}</span>
-            {tableIndex === sketchTableIndex && (
-              <Image
-                class={"table__flower"}
-                src={flower19Image}
-                alt={"Flower"}
-              />
-            )}
-          </div>
-        ))
-      }
-      <div class="sketch__item entry">Entrada</div>
-    </div>
+    {
+      tableIndex + 1 !== allTables.length && (
+        <div class="sketch">
+          {tables.map((table, sketchTableIndex) => {
+            if (sketchTableIndex === allTables.length - 1) {
+              return null;
+            }
+
+            return (
+              <div
+                class={`sketch__item table table--${tableIndex === sketchTableIndex ? "active" : "inactive"} table--${sketchTableIndex + 1} `}
+                style={`grid-area: table--${sketchTableIndex + 1}`}
+              >
+                <span>{sketchTableIndex + 1}</span>
+                {tableIndex === sketchTableIndex && (
+                  <Image
+                    class={"table__flower"}
+                    src={flower19Image}
+                    alt={"Flower"}
+                  />
+                )}
+              </div>
+            );
+          })}
+          <div class="sketch__item entry">Entrada</div>
+        </div>
+      )
+    }
 
     <div class="with">
       <h3 class="subtitle">Compartes tu mesa con:</h3>
