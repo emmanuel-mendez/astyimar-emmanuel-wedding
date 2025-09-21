@@ -1,4 +1,3 @@
-import { useState } from "preact/hooks";
 import type { ComponentChildren } from "preact";
 import styles from "./styles.module.css";
 
