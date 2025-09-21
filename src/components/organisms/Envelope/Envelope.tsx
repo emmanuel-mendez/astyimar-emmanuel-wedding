@@ -14,7 +14,7 @@ export default function Envelope({ guest }: EnvelopeProps) {
     if (!open) {
       const timer = setTimeout(() => {
         setOpen(true);
-      }, 3000);
+      }, 10000);
       return () => clearTimeout(timer);
     }
   }, [open]);
@@ -30,7 +30,7 @@ export default function Envelope({ guest }: EnvelopeProps) {
     setOpen(true);
     setTimeout(() => {
       setVisible(false);
-    }, 1500);
+    }, 2000);
   }
 
   return (
