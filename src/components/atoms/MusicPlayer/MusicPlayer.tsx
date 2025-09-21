@@ -3,14 +3,22 @@ import styles from "./styles.module.css";
 
 type MusicPlayerProps = {
   play: boolean;
+  manual?: boolean;
 };
 
-export default function MusicPlayer({ play }: MusicPlayerProps) {
+export default function MusicPlayer({
+  play,
+  manual = false,
+}: MusicPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [showButton, setShowButton] = useState(false);
+  const [showButton, setShowButton] = useState(manual);
 
   useEffect(() => {
+    if (manual) {
+      setShowButton(true);
+      return;
+    }
     let timer: number | undefined;
     if (play) {
       timer = window.setTimeout(() => setShowButton(true), 15000);
@@ -20,13 +28,15 @@ export default function MusicPlayer({ play }: MusicPlayerProps) {
     return () => {
       if (timer) clearTimeout(timer);
     };
-  }, [play]);
+  }, [play, manual]);
 
   useEffect(() => {
-    if (play) {
+    if (manual) {
+      setIsPlaying(false);
+    } else if (play) {
       setIsPlaying(true);
     }
-  }, [play]);
+  }, [play, manual]);
 
   useEffect(() => {
     const audio = audioRef.current;

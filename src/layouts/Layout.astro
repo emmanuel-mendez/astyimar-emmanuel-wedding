@@ -5,6 +5,7 @@ import Header from "@components/organisms/Header/Header.astro";
 import type { Guest } from "@models/types/guest";
 import "../../styles/main.css";
 import Envelope from "@components/organisms/Envelope/Envelope";
+import MusicPlayer from "@components/atoms/MusicPlayer/MusicPlayer";
 
 interface Props {
   guest?: Guest;
@@ -55,7 +56,13 @@ const { guest } = Astro.props;
       {guest && <Float client:load guest={guest} />}
     </div>
     <Footer />
-    {guest && <Envelope client:load guest={guest} />}
+    {
+      guest ? (
+        <Envelope client:load guest={guest} />
+      ) : (
+        <MusicPlayer client:load play={true} manual={true} />
+      )
+    }
   </body>
 
   <style>
