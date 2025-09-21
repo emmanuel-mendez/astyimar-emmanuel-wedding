@@ -1,6 +1,7 @@
 import type { Guest } from "@models/types/guest";
 import { useEffect, useState } from "preact/hooks";
 import styles from "./styles.module.css";
+import MusicPlayer from "@components/atoms/MusicPlayer/MusicPlayer";
 
 type EnvelopeProps = {
   guest: Guest;
@@ -62,6 +63,7 @@ export default function Envelope({ guest }: EnvelopeProps) {
           </div>
         </div>
       )}
+      <MusicPlayer play={open} />
     </>
   );
 }
