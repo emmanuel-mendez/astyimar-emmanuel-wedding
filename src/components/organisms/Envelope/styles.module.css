@@ -8,6 +8,10 @@
   cursor: pointer;
 }
 
+.hostOpen {
+  cursor: unset;
+}
+
 .seal {
   position: fixed;
   top: calc(50% - 3rem);
@@ -51,7 +55,7 @@
 
 .seal.open {
   transform: translateY(-100vh);
-  transition: transform 1s ease;
+  transition: transform 1.8s ease;
 }
 
 .sealText {
@@ -100,7 +104,7 @@
 
 .top.open {
   transform: translateY(-100vh);
-  transition: transform 1s ease;
+  transition: transform 1.8s ease;
 }
 
 .topShadow {
@@ -118,7 +122,7 @@
 
 .topShadow.open {
   transform: translateY(-100vh);
-  transition: transform 1.5s ease;
+  transition: transform 1.8s ease;
 }
 
 .body {
@@ -152,7 +156,7 @@
 
 .body.open {
   transform: translateY(100vh);
-  transition: transform 1.5s ease 0.5s;
+  transition: transform 1.8s ease 0.5s;
 }
 
 .content {

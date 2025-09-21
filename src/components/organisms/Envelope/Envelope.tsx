@@ -22,13 +22,16 @@ export default function Envelope({ guest }: EnvelopeProps) {
     setOpen(true);
     setTimeout(() => {
       setVisible(false);
-    }, 2000);
+    }, 2300);
   }
 
   return (
     <>
       {visible && (
-        <div className={styles.host} onClick={onOpen}>
+        <div
+          className={`${styles.host} ${open ? styles.hostOpen : ""}`}
+          onClick={onOpen}
+        >
           <div
             className={
               open ? `${styles.seal} ${styles.open}` : `${styles.seal} `
