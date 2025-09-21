@@ -40,6 +40,15 @@ export default function Envelope({ guest }: EnvelopeProps) {
             <span className={`${styles.sealText} font--heading`}>AyE</span>
           </div>
           <div
+            className={
+              open
+                ? `${styles.message} ${styles.open}`
+                : `${styles.message} font--body`
+            }
+          >
+            Presione aquí
+          </div>
+          <div
             className={open ? `${styles.top} ${styles.open}` : styles.top}
           ></div>
           <div

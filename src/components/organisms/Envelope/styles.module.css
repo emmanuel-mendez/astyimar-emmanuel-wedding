@@ -170,6 +170,7 @@
 .from,
 .to {
   font-size: 1.2rem;
+  font-weight: bold;
 
   @media (min-width: 768px) {
     font-size: 1.75rem;
@@ -178,4 +179,31 @@
   @media (min-width: 1024px) {
     font-size: 2rem;
   }
+}
+
+.message {
+  position: fixed;
+  top: calc(50% + 4rem);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 1;
+  z-index: 3;
+  font-size: 1.2rem;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    top: calc(50% + 5rem);
+    font-size: 1.25rem;
+  }
+
+  @media (min-width: 1024px) {
+    top: calc(50% + 6rem);
+    font-size: 1.5rem;
+  }
+}
+
+.message.open {
+  transform: translateY(100vh);
+  transition: transform 1.8s ease 0.5s;
 }
