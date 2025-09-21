@@ -1,0 +1,42 @@
+.host {
+  background-color: var(--white);
+  box-shadow: 0.0625rem 0.0625rem 0.25rem rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  border-radius: 0.625rem;
+  position: fixed;
+  right: 1rem;
+  bottom: 4.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  z-index: 1;
+  color: var(--black);
+  text-decoration: none;
+  border: none;
+
+  @media (min-width: 1280px) {
+    display: none;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  background-color: var(--primary);
+  padding: 0.5rem;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.text {
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+.line {
+  display: block;
+}
