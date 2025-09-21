@@ -16,6 +16,7 @@
   border: none;
   color: var(--white);
   opacity: 1;
+  animation: fade-in 4s ease-in;
 
   @media (min-width: 1024px) {
     bottom: 1.5rem;
@@ -24,7 +25,11 @@
 }
 
 .playing {
-  animation: fade-in 4s ease-in, pulse 2s infinite;
+  animation-name: fade-in, pulse;
+  animation-duration: 4s, 2s;
+  animation-timing-function: ease-in, linear;
+  animation-iteration-count: 1, infinite;
+  animation-fill-mode: both, none;
 }
 
 @keyframes fade-in {
