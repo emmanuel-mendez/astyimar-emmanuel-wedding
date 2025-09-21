@@ -114,7 +114,9 @@ export function Nav({ guest }: Props) {
 
   useEffect(() => {
     const body = document.body;
-    body.classList.toggle("overflow-y--hidden", visible);
+    if (visible) {
+      body.classList.toggle("overflow-y--hidden", visible);
+    }
     return () => {
       body.classList.remove("overflow-y--hidden");
     };
