@@ -270,14 +270,15 @@ function isGuestInTable(guests: Guest[], guestId: string): boolean {
   .sketch {
     display: grid;
     width: min(37.5rem, 90%);
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     grid-gap: 0.5rem;
     grid-template-areas:
-      ".        table--10 .         table--3  table--2  table--1"
-      ".        .         .         .         .         ."
-      "table--8 table--6  .         .         .         ."
-      "table--9 table--7  entry     .         table--4  table--5";
+      ".            .           table--5     .            table--4    table--3    table--2"
+      ".            .           .            .            .           .           ."
+      "table--9     .           table--6     .            .           .           ."
+      ".            table--8    .            .            .           .           ."
+      "table--10    .           table--7     .            entry       .           table--1";
 
     @media (min-width: 768px) {
       gap: 0.75rem;
